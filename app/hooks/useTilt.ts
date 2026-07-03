@@ -27,8 +27,6 @@ export function useTilt<T extends HTMLElement>(
 
       el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${scale}, ${scale}, ${scale})`;
       el.style.transition = `transform ${speed}ms ease-out`;
-      el.style.setProperty("--mouse-x", `${(x / rect.width) * 100}%`);
-      el.style.setProperty("--mouse-y", `${(y / rect.height) * 100}%`);
     };
 
     const handleMouseLeave = () => {

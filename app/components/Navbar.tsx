@@ -52,13 +52,6 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="/Shehroz_Majeed_Resume.pdf"
-            download
-            className="text-sm text-slate-400 hover:text-cyber-gold transition-colors font-medium"
-          >
-            Resume
-          </a>
-          <a
             href="#contact"
             className="px-4 py-2 text-sm font-medium rounded-lg border border-cyber-blue/30 text-cyber-blue hover:bg-cyber-blue/10 transition-all"
           >

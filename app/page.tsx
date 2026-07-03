@@ -1,5 +1,4 @@
 import Navbar from "./components/Navbar";
-import StatsBar from "./components/StatsBar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
@@ -14,7 +13,6 @@ export default function Home() {
     <main className="relative bg-cyber-black min-h-screen">
       <Navbar />
       <Hero />
-      <StatsBar />
       <About />
       <Skills />
       <Projects />
