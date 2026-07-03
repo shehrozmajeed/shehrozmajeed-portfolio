@@ -26,7 +26,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4"
+          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4"
         >
           <span className="text-white">Shehroz</span>{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue to-cyber-purple text-glow">
@@ -86,6 +86,13 @@ export default function Hero() {
             className="px-8 py-3 rounded-lg glass text-white font-medium hover:border-cyber-blue/40 transition-all"
           >
             Contact Me
+          </a>
+          <a
+            href="/Shehroz_Majeed_Resume.pdf"
+            download
+            className="px-8 py-3 rounded-lg border border-cyber-gold/30 text-cyber-gold font-medium hover:bg-cyber-gold/10 transition-all"
+          >
+            Download Resume
           </a>
         </motion.div>
 
