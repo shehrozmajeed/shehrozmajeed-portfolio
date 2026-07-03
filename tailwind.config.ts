@@ -15,13 +15,11 @@ const config: Config = {
           blue: "#00f0ff",
           purple: "#b829dd",
           pink: "#ff007a",
-          gold: "#d4b47a",
           surface: "rgba(10, 14, 39, 0.6)",
         },
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Space Grotesk", "Inter", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
       animation: {
