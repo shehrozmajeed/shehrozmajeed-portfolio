@@ -137,13 +137,13 @@ export default function Hero() {
                     2000,
                     "AI-Driven Threat Operator",
                     2000,
-                    "Penetration Tester | Top 6% TryHackMe",
+                    "Penetration Tester | Top 5% TryHackMe",
                     3000,
                   ]}
                   wrapper="span"
                   speed={55}
                   repeat={Infinity}
-                  className="text-hack-green text-glow"
+                  className="text-hack-green"
                 />
                 <span className="text-hack-green cursor-blink">_</span>
               </motion.div>
@@ -153,12 +153,11 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="text-[#5a8a5a] max-w-2xl mx-auto mb-10 leading-relaxed text-sm font-mono"
+                className="text-[#e6ffe6] max-w-2xl mx-auto mb-10 leading-relaxed text-sm font-mono"
               >
                 <span className="text-hack-green/40">[INFO] </span>
-                CS Student @ GIKI. Top 6% TryHackMe globally.
-                Building autonomous attack simulators, ML-powered SOC analyzers,
-                and zero-trust architectures. Simulating breaches before the adversary does.
+                💻 Cybersecurity | 🎓 GIKI ’27 | 🛡️ Ethical Hacking &amp; Pen Testing | ⚙️ Security Tool Dev | AI &amp; ML <br className="hidden md:block" />
+                <span className="text-hack-green mt-2 inline-block">TryHackMe: Top 5% (8000+ Points) • Completed Paths: Jr Pentester, AI Security</span>
               </motion.p>
 
               {/* CTA buttons */}
