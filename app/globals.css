@@ -33,7 +33,7 @@ html {
 
 body {
   background-color: var(--hack-bg);
-  color: #b0c0b0;
+  color: #e6ffe6;
   font-family: 'JetBrains Mono', 'Share Tech Mono', monospace;
   overflow-x: hidden;
   position: relative;
@@ -44,29 +44,9 @@ h1, h2, h3, h4, .font-display {
   letter-spacing: 0.05em;
 }
 
-/* === SCANLINE OVERLAY === */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.08) 2px,
-    rgba(0, 0, 0, 0.08) 4px
-  );
-  animation: scanlines 8s linear infinite;
-}
+/* === SCANLINE OVERLAY (REMOVED FOR READABILITY) === */
 
-@keyframes scanlines {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 40px; }
-}
-
-/* === CRT FLICKER === */
+/* === CRT FLICKER (REMOVED FOR READABILITY) === */
 body::after {
   content: "";
   position: fixed;
@@ -74,14 +54,6 @@ body::after {
   z-index: 9997;
   pointer-events: none;
   background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.4) 100%);
-  animation: crt-flicker 0.15s infinite;
-}
-
-@keyframes crt-flicker {
-  0%, 100% { opacity: 1; }
-  92% { opacity: 0.98; }
-  94% { opacity: 0.95; }
-  96% { opacity: 0.98; }
 }
 
 ::selection {
