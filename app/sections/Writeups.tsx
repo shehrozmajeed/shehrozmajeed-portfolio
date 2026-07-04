@@ -1,15 +1,18 @@
 "use client";
 
-import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
-import { useTilt } from "../hooks/useTilt";
-import { BookOpen, Shield, Cpu, Terminal, ExternalLink } from "lucide-react";
+import styles from "./Writeups.module.css";
+
+const ShieldIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>;
+const CpuIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>;
+const BookIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>;
+const ExternalIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>;
 
 const writeups = [
   {
     title: "Jr Penetration Tester Path",
-    icon: Shield,
-    tag: "OFFENSIVE_SECURITY",
+    icon: ShieldIcon,
+    tag: "OFFENSIVE SECURITY",
     completed: "100%",
     description:
       "Comprehensive walkthroughs focusing on penetration testing fundamentals and core methodologies. Covers active and passive reconnaissance, vulnerability exploitation, and reporting.",
@@ -22,12 +25,13 @@ const writeups = [
       "Metasploit & Exploitation",
       "Pentesting Methodologies",
     ],
-    github: "https://github.com/shehrozmajeed/ctf-writeups/tree/main/tryhackme/Jr%20Penetration%20Tester",
+    github:
+      "https://github.com/shehrozmajeed/ctf-writeups/tree/main/tryhackme/Jr%20Penetration%20Tester",
   },
   {
     title: "AI Security Path",
-    icon: Cpu,
-    tag: "AI_SECURITY",
+    icon: CpuIcon,
+    tag: "AI SECURITY",
     completed: "100%",
     description:
       "Detailed notes and lab solutions focusing on the intersection of artificial intelligence and cybersecurity. Exploring threats, vulnerabilities, and defenses in AI systems.",
@@ -37,112 +41,64 @@ const writeups = [
       "Threat Modeling for AI",
       "AI Vulnerability Analysis",
     ],
-    github: "https://github.com/shehrozmajeed/ctf-writeups/tree/main/tryhackme/Ai%20Security",
+    github:
+      "https://github.com/shehrozmajeed/ctf-writeups/tree/main/tryhackme/Ai%20Security",
   },
 ];
-
-function WriteupCard({
-  writeup,
-  index,
-}: {
-  writeup: (typeof writeups)[0];
-  index: number;
-}) {
-  const tiltRef = useTilt<HTMLDivElement>({ max: 5, scale: 1.01 });
-
-  return (
-    <motion.div
-      ref={tiltRef}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
-      className="glass-panel rounded-2xl p-6 md:p-8 hover:bg-zinc-900/40 transition-all group flex flex-col h-full border border-white/5"
-      style={{ transformStyle: "preserve-3d" }}
-    >
-      {/* Header */}
-      <div className="flex items-start justify-between mb-6">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 group-hover:bg-blue-500/20 group-hover:scale-110 transition-all">
-            <writeup.icon className="w-6 h-6 text-blue-400" />
-          </div>
-          <div>
-            <div className="text-xs font-semibold text-blue-400 tracking-wider uppercase">
-              {writeup.tag.replace('_', ' ')}
-            </div>
-          </div>
-        </div>
-        <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full text-zinc-300 bg-white/5 border border-white/10">
-          COMPLETED: {writeup.completed}
-        </span>
-      </div>
-
-      {/* Title */}
-      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
-        {writeup.title}
-      </h3>
-
-      {/* Description */}
-      <p className="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">
-        {writeup.description}
-      </p>
-
-      {/* Topics */}
-      <div className="mb-8">
-        <span className="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-3 block">
-          Key Topics Covered
-        </span>
-        <div className="flex flex-wrap gap-2">
-          {writeup.topics.map((topic) => (
-            <span
-              key={topic}
-              className="text-xs px-3 py-1.5 rounded-lg font-medium text-zinc-300 bg-zinc-800/50 border border-white/5"
-            >
-              {topic}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* GitHub Link */}
-      <a
-        href={writeup.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white transition-all mt-auto border border-blue-500/30 px-5 py-2.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 hover:border-blue-400/50 w-full md:w-fit"
-      >
-        <BookOpen className="w-4 h-4" />
-        View Walkthroughs
-        <ExternalLink className="w-4 h-4 ml-1" />
-      </a>
-    </motion.div>
-  );
-}
 
 export default function Writeups() {
   return (
     <SectionWrapper id="writeups">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <span className="text-blue-400 font-semibold tracking-wider text-sm mb-4 block uppercase">
-          Technical Writing
-        </span>
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
-          Writeups & Walkthroughs
-        </h2>
-        <p className="text-zinc-400 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-          Documented solutions and methodologies for <strong className="text-white">100+</strong> TryHackMe rooms, focusing on offensive security and AI systems.
+      <div className={styles.sectionHeader}>
+        <span className={styles.sectionLabel}>Technical Writing</span>
+        <h2 className={styles.sectionTitle}>Writeups & Walkthroughs</h2>
+        <p className={styles.sectionDesc}>
+          Documented solutions and methodologies for{" "}
+          <span className={styles.sectionDescHighlight}>100+</span> TryHackMe
+          rooms, focusing on offensive security and AI systems.
         </p>
-      </motion.div>
+      </div>
 
-      <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
-        {writeups.map((writeup, i) => (
-          <WriteupCard key={i} writeup={writeup} index={i} />
-        ))}
+      <div className={styles.grid}>
+        {writeups.map((writeup, i) => {
+          const Icon = writeup.icon;
+          return (
+            <div key={i} className={`glass-panel ${styles.writeupCard}`}>
+              <div className={styles.writeupTop}>
+                <div className={styles.writeupIconRow}>
+                  <div className={styles.writeupIconWrap}>
+                    <Icon />
+                  </div>
+                  <span className={styles.writeupTag}>{writeup.tag}</span>
+                </div>
+                <span className={styles.writeupComplete}>
+                  COMPLETED: {writeup.completed}
+                </span>
+              </div>
+
+              <h3 className={styles.writeupTitle}>{writeup.title}</h3>
+              <p className={styles.writeupDesc}>{writeup.description}</p>
+
+              <span className={styles.topicsLabel}>Key Topics Covered</span>
+              <div className={styles.topicsList}>
+                {writeup.topics.map((topic) => (
+                  <span key={topic} className={styles.topicTag}>
+                    {topic}
+                  </span>
+                ))}
+              </div>
+
+              <a
+                href={writeup.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.writeupLink}
+              >
+                <BookIcon /> View Walkthroughs <ExternalIcon />
+              </a>
+            </div>
+          );
+        })}
       </div>
     </SectionWrapper>
   );

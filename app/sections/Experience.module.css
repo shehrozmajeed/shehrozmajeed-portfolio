@@ -1,0 +1,164 @@
+/* ═══════════════════════════════════════
+   EXPERIENCE SECTION
+   ═══════════════════════════════════════ */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: #fff;
+}
+
+.titleAccent {
+  color: var(--accent-orange);
+}
+
+.headerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.expCard {
+  padding: 28px 32px;
+  transition: border-color 0.3s ease;
+}
+
+.expTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.expLeft {
+  display: flex;
+  align-items: start;
+  gap: 16px;
+}
+
+.expIconWrap {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: background 0.3s ease;
+}
+
+.expCard:hover .expIconWrap {
+  background: var(--accent-orange-dim);
+}
+
+.expIconWrap svg {
+  width: 22px;
+  height: 22px;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.expCard:hover .expIconWrap svg {
+  color: var(--accent-orange);
+}
+
+.expMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.expType {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.expClearance {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+}
+
+.expRole {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.expOrg {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-orange);
+  opacity: 0.8;
+}
+
+.expPeriod {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+.expPeriod svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Points ── */
+.expPoints {
+  list-style: none;
+  padding-left: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.expPoint {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.expDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-orange);
+  opacity: 0.6;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .expPoints {
+    padding-left: 0;
+  }
+}

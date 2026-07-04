@@ -1,0 +1,202 @@
+/* ═══════════════════════════════════════
+   WRITEUPS SECTION
+   ═══════════════════════════════════════ */
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.sectionDesc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.sectionDescHighlight {
+  color: #fff;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Writeup Card ── */
+.writeupCard {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.writeupCard:hover {
+  transform: translateY(-4px);
+}
+
+.writeupTop {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.writeupIconRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.writeupIconWrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--accent-orange-dim);
+  border: 1px solid rgba(255, 140, 66, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.writeupCard:hover .writeupIconWrap {
+  transform: scale(1.1);
+  background: rgba(255, 140, 66, 0.2);
+}
+
+.writeupIconWrap svg {
+  width: 22px;
+  height: 22px;
+  color: var(--accent-orange);
+}
+
+.writeupTag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+}
+
+.writeupComplete {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.writeupTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.writeupCard:hover .writeupTitle {
+  color: var(--accent-orange);
+}
+
+.writeupDesc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+/* ── Topics ── */
+.topicsLabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.topicsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.topicTag {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ── GitHub Link ── */
+.writeupLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: var(--accent-orange-dim);
+  border: 1px solid rgba(255, 140, 66, 0.25);
+  text-decoration: none;
+  margin-top: auto;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.writeupLink:hover {
+  background: rgba(255, 140, 66, 0.2);
+  border-color: rgba(255, 140, 66, 0.4);
+}
+
+.writeupLink svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

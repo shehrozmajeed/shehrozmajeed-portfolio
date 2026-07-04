@@ -1,0 +1,201 @@
+/* ═══════════════════════════════════════
+   ABOUT SECTION
+   ═══════════════════════════════════════ */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: #fff;
+}
+
+.titleAccent {
+  color: var(--accent-orange);
+}
+
+.headerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ── Summary Panel ── */
+.summaryPanel {
+  padding: 32px;
+}
+
+.summaryHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.summaryIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-orange);
+}
+
+.summaryLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.summaryText {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.summaryHighlight {
+  color: #fff;
+  font-weight: 600;
+}
+
+.statusBar {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statusLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-tertiary);
+}
+
+.statusValue {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-emerald);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Highlight Cards ── */
+.highlightsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.highlightCard {
+  padding: 24px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.highlightCard:hover {
+  transform: translateY(-4px);
+}
+
+.highlightTop {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.highlightIconWrap {
+  padding: 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: background 0.3s ease;
+}
+
+.highlightCard:hover .highlightIconWrap {
+  background: var(--accent-orange-dim);
+}
+
+.highlightIconWrap svg {
+  width: 18px;
+  height: 18px;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.highlightCard:hover .highlightIconWrap svg {
+  color: var(--accent-orange);
+}
+
+.highlightTag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.1em;
+}
+
+.highlightLabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
+.highlightTitle {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.highlightDesc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .highlightsGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,114 @@
+/* ═══════════════════════════════════════
+   SKILLS SECTION
+   ═══════════════════════════════════════ */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: #fff;
+}
+
+.titleAccent {
+  color: var(--accent-orange);
+}
+
+.headerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.categoryCard {
+  padding: 28px 32px;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.categoryDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.categoryTitle {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+/* ── Skill Bar ── */
+.skillItem {
+  margin-bottom: 20px;
+}
+
+.skillItem:last-child {
+  margin-bottom: 0;
+}
+
+.skillMeta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.skillName {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.skillLevel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.skillTrack {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skillFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1.2s var(--ease-out-expo);
+  width: 0;
+}
+
+.skillFill.visible {
+  /* width is set inline */
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
