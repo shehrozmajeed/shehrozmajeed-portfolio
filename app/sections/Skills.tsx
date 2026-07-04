@@ -9,11 +9,11 @@ const skillCategories = [
     prefix: "ATK",
     barClass: "progress-neon-red",
     skills: [
-      { name: "Penetration Testing", level: 95 },
-      { name: "OWASP Top 10", level: 92 },
-      { name: "Red Team Operations", level: 88 },
+      { name: "Web App Pen Testing (OWASP)", level: 95 },
+      { name: "Network Security & Recon", level: 90 },
+      { name: "API Security (JWT, IDOR)", level: 85 },
+      { name: "Threat Modeling (STRIDE/DREAD)", level: 88 },
       { name: "Vulnerability Assessment", level: 90 },
-      { name: "Network Exploitation", level: 85 },
     ],
   },
   {
@@ -21,11 +21,11 @@ const skillCategories = [
     prefix: "TOOL",
     barClass: "progress-neon",
     skills: [
-      { name: "Burp Suite", level: 92 },
-      { name: "Metasploit", level: 88 },
-      { name: "Nmap / Wireshark", level: 90 },
-      { name: "OWASP ZAP", level: 85 },
-      { name: "Kali Linux", level: 95 },
+      { name: "Burp Suite Pro", level: 95 },
+      { name: "Metasploit Framework", level: 90 },
+      { name: "Nmap / Wireshark", level: 92 },
+      { name: "Gobuster / ffuf / Hydra", level: 88 },
+      { name: "OSINT (Shodan, etc.)", level: 85 },
     ],
   },
   {
@@ -35,9 +35,9 @@ const skillCategories = [
     skills: [
       { name: "Python", level: 95 },
       { name: "Bash Scripting", level: 88 },
-      { name: "C / C++", level: 80 },
-      { name: "SQL", level: 85 },
+      { name: "SQL Injection & Database", level: 85 },
       { name: "JavaScript / TypeScript", level: 78 },
+      { name: "C / C++", level: 80 },
     ],
   },
   {
@@ -75,11 +75,11 @@ function SkillBar({
       className="mb-5"
     >
       <div className="flex justify-between mb-1.5 font-mono">
-        <span className="text-xs text-[#5a8a5a]">
-          <span className="text-hack-green/30">[{prefix}] </span>
+        <span className="text-xs text-white">
+          <span className="text-hack-green">[{prefix}] </span>
           {name}
         </span>
-        <span className="text-[10px] text-hack-green/50">{level}%</span>
+        <span className="text-[10px] text-hack-green font-bold">{level}%</span>
       </div>
       <div className="w-full h-[3px] bg-hack-green/8 rounded-full overflow-hidden relative">
         <motion.div
@@ -99,10 +99,10 @@ export default function Skills() {
     <SectionWrapper id="skills">
       {/* Section header */}
       <div className="flex items-center gap-3 mb-12">
-        <span className="text-hack-green/40 font-mono text-sm">[002]</span>
-        <div className="flex-1 h-[1px] bg-hack-green/10" />
-        <span className="font-display text-xs tracking-widest text-hack-green/40">SKILL_MATRIX.SH</span>
-        <div className="flex-1 h-[1px] bg-hack-green/10" />
+        <span className="text-hack-green font-mono text-sm font-bold">[002]</span>
+        <div className="flex-1 h-[1px] bg-hack-green/40" />
+        <span className="font-display text-xs tracking-widest text-hack-green font-bold">SKILL_MATRIX.SH</span>
+        <div className="flex-1 h-[1px] bg-hack-green/40" />
       </div>
 
       <motion.div
@@ -114,8 +114,8 @@ export default function Skills() {
         <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 tracking-widest">
           TECHNICAL <span className="text-hack-green text-glow">ARSENAL</span>
         </h2>
-        <p className="text-[#4a7a4a] max-w-2xl mx-auto font-mono text-sm">
-          <span className="text-hack-red/60">root@arsenal:~# </span>
+        <p className="text-white max-w-2xl mx-auto font-mono text-sm font-semibold">
+          <span className="text-hack-red">root@arsenal:~# </span>
           ls -la /tools && cat /skills/matrix.json
         </p>
       </motion.div>

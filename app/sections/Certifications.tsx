@@ -96,10 +96,10 @@ export default function Certifications() {
     <SectionWrapper id="certifications" className="matrix-grid">
       {/* Section header */}
       <div className="flex items-center gap-3 mb-12">
-        <span className="text-hack-green/40 font-mono text-sm">[005]</span>
-        <div className="flex-1 h-[1px] bg-hack-green/10" />
-        <span className="font-display text-xs tracking-widest text-hack-green/40">CLEARANCE_CERTS.DB</span>
-        <div className="flex-1 h-[1px] bg-hack-green/10" />
+        <span className="text-hack-green font-mono text-sm font-bold">[005]</span>
+        <div className="flex-1 h-[1px] bg-hack-green/40" />
+        <span className="font-display text-xs tracking-widest text-hack-green font-bold">CLEARANCE_CERTS.DB</span>
+        <div className="flex-1 h-[1px] bg-hack-green/40" />
       </div>
 
       <motion.div
@@ -112,8 +112,8 @@ export default function Certifications() {
           CERTIFICATIONS &{" "}
           <span className="text-hack-green text-glow">RANKINGS</span>
         </h2>
-        <p className="text-[#4a7a4a] max-w-2xl mx-auto font-mono text-xs">
-          <span className="text-hack-red/60">root@kali:~# </span>
+        <p className="text-white max-w-2xl mx-auto font-mono text-xs font-semibold">
+          <span className="text-hack-red">root@kali:~# </span>
           cat /etc/security/clearances.conf | grep VERIFIED
         </p>
       </motion.div>
@@ -144,7 +144,7 @@ export default function Certifications() {
               </span>
             </div>
             <h3 className="font-display text-xs font-bold text-white mb-1 tracking-wide">{cert.name}</h3>
-            <p className="text-[10px] text-[#4a7a4a] font-mono">{cert.detail}</p>
+            <p className="text-[10px] text-white font-mono font-semibold">{cert.detail}</p>
           </motion.a>
         ))}
       </div>
@@ -166,13 +166,13 @@ export default function Certifications() {
             <Trophy className="w-10 h-10 text-hack-amber" style={{ filter: "drop-shadow(0 0 8px rgba(255,170,0,0.7))" }} />
           </div>
           <div className="text-center md:text-left">
-            <div className="text-[9px] font-mono text-hack-amber/50 tracking-widest mb-1">[GLOBAL_RANK_STATUS]</div>
+            <div className="text-[9px] font-mono text-hack-amber tracking-widest mb-1 font-bold">[GLOBAL_RANK_STATUS]</div>
             <h3 className="font-display text-lg font-bold text-white mb-2 tracking-wide flex items-center gap-2 justify-center md:justify-start">
               TryHackMe — <span className="text-hack-amber" style={{ textShadow: "0 0 12px rgba(255,170,0,0.5)" }}>TOP 5% GLOBALLY</span>
-              <span className="text-[10px] text-hack-amber/60 border border-hack-amber/30 px-2 py-0.5 rounded bg-hack-amber/10 ml-2">VIEW PROFILE ↗</span>
+              <span className="text-[10px] text-hack-amber border border-hack-amber/50 px-2 py-0.5 rounded bg-hack-amber/20 ml-2 font-bold">VIEW PROFILE ↗</span>
             </h3>
-            <p className="text-[#4a7a4a] text-xs leading-relaxed font-mono">
-              <span className="text-hack-amber/40">&gt; </span>
+            <p className="text-white text-xs leading-relaxed font-mono font-semibold">
+              <span className="text-hack-amber font-bold">&gt; </span>
               Completed learning paths including Jr Pentester and AI Security. Demonstrated hands-on skills in penetration testing,
               privilege escalation, web exploitation, and network security. 8000+ points.
             </p>

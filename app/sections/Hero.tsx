@@ -128,7 +128,7 @@ export default function Hero() {
                 transition={{ delay: 0.3 }}
                 className="text-base md:text-lg font-mono mb-6 h-7"
               >
-                <span className="text-hack-green/50">// </span>
+                <span className="text-hack-green font-bold">// </span>
                 <TypeAnimation
                   sequence={[
                     "Offensive Security Engineer",
@@ -153,11 +153,11 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="text-[#e6ffe6] max-w-2xl mx-auto mb-10 leading-relaxed text-sm font-mono"
+                className="text-white max-w-2xl mx-auto mb-10 leading-relaxed text-sm font-mono font-semibold"
               >
-                <span className="text-hack-green/40">[INFO] </span>
+                <span className="text-hack-green font-bold">[INFO] </span>
                 💻 Cybersecurity | 🎓 GIKI ’27 | 🛡️ Ethical Hacking &amp; Pen Testing | ⚙️ Security Tool Dev | AI &amp; ML <br className="hidden md:block" />
-                <span className="text-hack-green mt-2 inline-block">TryHackMe: Top 5% (8000+ Points) • Completed Paths: Jr Pentester, AI Security</span>
+                <span className="text-hack-green mt-2 inline-block font-bold">TryHackMe: Top 5% (8000+ Points) • Completed Paths: Jr Pentester, AI Security</span>
               </motion.p>
 
               {/* CTA buttons */}
@@ -208,7 +208,7 @@ export default function Hero() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded glass text-hack-green/60 hover:text-hack-green hover:border-hack-green/40 transition-all font-mono text-xs flex flex-col items-center gap-1"
+                    className="p-2.5 rounded glass text-white hover:text-hack-green hover:border-hack-green/40 transition-all font-mono text-xs flex flex-col items-center gap-1 font-bold"
                     aria-label={s.label}
                   >
                     <s.icon className="w-4 h-4" />
@@ -230,10 +230,10 @@ export default function Hero() {
       >
         <a
           href="#about"
-          className="flex flex-col items-center gap-2 text-hack-green/40 hover:text-hack-green transition-colors font-mono text-xs"
+          className="flex flex-col items-center gap-2 text-white hover:text-hack-green transition-colors font-mono text-xs font-bold"
         >
           <span>SCROLL</span>
-          <ArrowDown className="w-4 h-4 animate-bounce" />
+          <ArrowDown className="w-4 h-4 animate-bounce text-hack-green" />
         </a>
       </motion.div>
     </section>

@@ -4,6 +4,7 @@ import MatrixRain from "./components/MatrixRain";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
+import Writeups from "./sections/Writeups";
 import Projects from "./sections/Projects";
 import Experience from "./sections/Experience";
 import Certifications from "./sections/Certifications";
@@ -22,6 +23,7 @@ export default function Home() {
         <StatsBar />
         <About />
         <Skills />
+        <Writeups />
         <Projects />
         <Experience />
         <Certifications />

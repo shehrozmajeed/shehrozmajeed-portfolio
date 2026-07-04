@@ -53,7 +53,7 @@ export default function StatsBar() {
             className="text-center"
           >
             <Counter value={stat.value} suffix={stat.suffix} />
-            <p className="text-[9px] md:text-[10px] text-hack-green/30 mt-2 font-mono tracking-widest">
+            <p className="text-[9px] md:text-[10px] text-white mt-2 font-mono tracking-widest font-semibold">
               {stat.label}
             </p>
           </motion.div>
