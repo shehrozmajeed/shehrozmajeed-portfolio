@@ -128,7 +128,7 @@ export default function MatrixRain() {
     <div className="fixed inset-0 -z-20 overflow-hidden">
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-40"
+        className="absolute inset-0 w-full h-full opacity-15"
         style={{ imageRendering: "pixelated" }}
       />
       {/* Radial vignette to focus center */}
