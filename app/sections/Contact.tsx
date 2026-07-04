@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
-import { Github, Linkedin, Mail, MapPin, Send, Terminal } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -17,26 +17,20 @@ export default function Contact() {
 
   return (
     <SectionWrapper id="contact">
-      {/* Section header */}
-      <div className="flex items-center gap-3 mb-12">
-        <span className="text-hack-green/40 font-mono text-sm">[006]</span>
-        <div className="flex-1 h-[1px] bg-hack-green/10" />
-        <span className="font-display text-xs tracking-widest text-hack-green/40">CONTACT.SH</span>
-        <div className="flex-1 h-[1px] bg-hack-green/10" />
-      </div>
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-14"
+        className="text-center mb-16"
       >
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 tracking-widest">
-          ESTABLISH <span className="text-hack-green text-glow">CONTACT</span>
+        <span className="text-blue-400 font-semibold tracking-wider text-sm mb-4 block uppercase">
+          Get in Touch
+        </span>
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+          Let's Work Together
         </h2>
-        <p className="text-[#4a7a4a] max-w-2xl mx-auto font-mono text-xs">
-          <span className="text-hack-red/60">root@kali:~# </span>
-          nc -lvnp 4444 — LISTENING FOR OPPORTUNITIES
+        <p className="text-zinc-400 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+          Open for opportunities in Offensive Security and Security Research. Feel free to reach out.
         </p>
       </motion.div>
 
@@ -48,46 +42,48 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="terminal-card rounded-xl p-6 mb-6">
-            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-hack-green/10">
-              <Terminal className="w-4 h-4 text-hack-green" />
-              <span className="font-mono text-xs text-hack-green/50">contact_info.json</span>
-            </div>
-            <div className="font-mono text-xs text-[#4a7a4a] space-y-3">
-              <div><span className="text-hack-green/40">status: </span><span className="text-hack-green animate-pulse">ONLINE</span></div>
-              <div><span className="text-hack-green/40">role: </span><span className="text-white/70">Offensive Security Engineer</span></div>
-              <div><span className="text-hack-green/40">location: </span><span className="text-white/70">Pakistan 🇵🇰</span></div>
-              <div><span className="text-hack-green/40">open_to: </span><span className="text-hack-green/70">[red_team, pentest, research]</span></div>
+          <div className="glass-panel rounded-2xl p-8 mb-6 border border-white/5">
+            <h3 className="text-xl font-bold text-white mb-6">Contact Information</h3>
+            <div className="space-y-6">
+              <div className="flex flex-col space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                    <Mail className="w-5 h-5 text-blue-400" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-zinc-500 block mb-1">Email</span>
+                    <a href="mailto:shehrozmajeed.sec@gmail.com" className="text-zinc-300 hover:text-blue-400 transition-colors">
+                      shehrozmajeed.sec@gmail.com
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                    <MapPin className="w-5 h-5 text-blue-400" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-zinc-500 block mb-1">Location</span>
+                    <span className="text-zinc-300">Pakistan — Remote Available</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="space-y-3 mb-6">
-            <a
-              href="mailto:shehrozmajeed.sec@gmail.com"
-              className="flex items-center gap-3 p-4 rounded-xl terminal-card hover:border-hack-green/40 transition-all group font-mono"
-            >
-              <Mail className="w-4 h-4 text-hack-green group-hover:scale-110 transition-transform" />
-              <span className="text-[#5a8a5a] text-xs">shehrozmajeed.sec@gmail.com</span>
-            </a>
-            <div className="flex items-center gap-3 p-4 rounded-xl terminal-card font-mono">
-              <MapPin className="w-4 h-4 text-hack-red/70" />
-              <span className="text-[#5a8a5a] text-xs">Pakistan — Remote Available</span>
-            </div>
-          </div>
-
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             {[
-              { icon: Github, href: "https://github.com/shehrozmajeed", label: "GITHUB" },
-              { icon: Linkedin, href: "https://linkedin.com/in/shehroz-majeed-a46a012b8", label: "LINKEDIN" },
+              { icon: Github, href: "https://github.com/shehrozmajeed", label: "GitHub" },
+              { icon: Linkedin, href: "https://linkedin.com/in/shehroz-majeed-a46a012b8", label: "LinkedIn" },
             ].map((profile) => (
               <a
                 key={profile.label}
                 href={profile.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded terminal-card text-[#5a8a5a] hover:text-hack-green hover:border-hack-green/40 transition-all font-mono text-xs"
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl glass-panel text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-all font-semibold text-sm border border-white/5 hover:border-white/10"
               >
-                <profile.icon className="w-4 h-4" />
+                <profile.icon className="w-5 h-5" />
                 {profile.label}
               </a>
             ))}
@@ -101,55 +97,62 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           onSubmit={handleSubmit}
-          className="terminal-card rounded-xl p-6 md:p-8 space-y-4"
+          className="glass-panel rounded-2xl p-8 space-y-6 border border-white/5"
         >
-          <div className="flex items-center gap-2 mb-2 pb-3 border-b border-hack-green/10">
-            <Terminal className="w-4 h-4 text-hack-green" />
-            <span className="font-mono text-xs text-hack-green/50">send_payload.sh</span>
-          </div>
-
-          {[
-            { key: "name", label: "OPERATOR_NAME", placeholder: "your_handle", type: "text" },
-            { key: "email", label: "EMAIL_ADDR", placeholder: "you@domain.com", type: "email" },
-          ].map((field) => (
-            <div key={field.key}>
-              <label className="block text-[10px] font-mono text-hack-green/40 mb-1.5 tracking-widest">
-                <span className="text-hack-green/20">// </span>{field.label}
+          <h3 className="text-xl font-bold text-white mb-6">Send a Message</h3>
+          
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-zinc-400 mb-2">
+                Name
               </label>
               <input
-                type={field.type}
+                type="text"
                 required
-                value={(formState as any)[field.key]}
-                onChange={(e) => setFormState({ ...formState, [field.key]: e.target.value })}
-                className="w-full px-4 py-3 rounded bg-black/60 border border-hack-green/20 text-hack-green placeholder-hack-green/20 focus:outline-none focus:border-hack-green/60 focus:shadow-[0_0_8px_rgba(0,255,65,0.2)] transition-all font-mono text-xs"
-                placeholder={field.placeholder}
+                value={formState.name}
+                onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-zinc-900/50 border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all"
+                placeholder="John Doe"
               />
             </div>
-          ))}
+            
+            <div>
+              <label className="block text-sm font-medium text-zinc-400 mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                required
+                value={formState.email}
+                onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-zinc-900/50 border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all"
+                placeholder="john@example.com"
+              />
+            </div>
 
-          <div>
-            <label className="block text-[10px] font-mono text-hack-green/40 mb-1.5 tracking-widest">
-              <span className="text-hack-green/20">// </span>MESSAGE_PAYLOAD
-            </label>
-            <textarea
-              required
-              rows={4}
-              value={formState.message}
-              onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-              className="w-full px-4 py-3 rounded bg-black/60 border border-hack-green/20 text-hack-green placeholder-hack-green/20 focus:outline-none focus:border-hack-green/60 focus:shadow-[0_0_8px_rgba(0,255,65,0.2)] transition-all resize-none font-mono text-xs"
-              placeholder="Describe the engagement..."
-            />
+            <div>
+              <label className="block text-sm font-medium text-zinc-400 mb-2">
+                Message
+              </label>
+              <textarea
+                required
+                rows={4}
+                value={formState.message}
+                onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-zinc-900/50 border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all resize-none"
+                placeholder="How can I help you?"
+              />
+            </div>
           </div>
 
           <button
             type="submit"
-            className="w-full py-3 rounded font-mono text-sm font-bold tracking-widest border border-hack-green text-hack-green hover:bg-hack-green hover:text-black transition-all duration-200 flex items-center justify-center gap-2"
-            style={{ boxShadow: "0 0 12px rgba(0,255,65,0.2)" }}
+            className="w-full py-4 rounded-xl font-semibold text-white bg-blue-600 hover:bg-blue-500 transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
           >
             {submitted ? (
-              <><span className="text-hack-green cursor-blink">█</span> PAYLOAD SENT — ACK</>
+              <>Message Sent Successfully</>
             ) : (
-              <>[./SEND_MESSAGE.sh] <Send className="w-4 h-4" /></>
+              <>Send Message <Send className="w-4 h-4" /></>
             )}
           </button>
         </motion.form>

@@ -15,17 +15,16 @@ import {
   CalendarClock,
   Wrench,
   FlaskConical,
-  Terminal,
 } from "lucide-react";
 
 const projects = [
   {
     title: "KAPA v1.0 — Autonomous AI Attacker",
     icon: Cpu,
-    tag: "RED_TEAM/AI",
+    tag: "Red Team / AI",
     period: "Oct – Dec 2025",
-    status: "DEPLOYED",
-    statusClass: "threat-critical",
+    status: "Deployed",
+    statusClass: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
     problem: "Manual red-team exercises are time-intensive and inconsistent across engagements.",
     approach:
       "Autonomous AI agent using Python and Scapy modeling full kill chains: reconnaissance, exploitation, and persistence.",
@@ -36,10 +35,10 @@ const projects = [
   {
     title: "IPDR-Cloud — ML Proactive Disaster Recovery",
     icon: FlaskConical,
-    tag: "RESEARCH",
+    tag: "Research",
     period: "Jan – Apr 2026",
-    status: "PUBLISHED",
-    statusClass: "threat-medium",
+    status: "Published",
+    statusClass: "bg-blue-500/10 text-blue-400 border border-blue-500/20",
     problem: "Cloud outages cause costly SLA breaches when recovery is reactive rather than predictive.",
     approach:
       "IEEE-style paper on a DQN RL agent trained on Google Cluster Trace 2019 to proactively trigger disaster recovery.",
@@ -50,10 +49,10 @@ const projects = [
   {
     title: "Zero Trust Digital Twin",
     icon: Network,
-    tag: "ARCHITECTURE",
+    tag: "Architecture",
     period: "Jan – Apr 2026",
-    status: "ACTIVE",
-    statusClass: "threat-low",
+    status: "Active",
+    statusClass: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
     problem: "Legacy flat networks expose lateral-movement paths to attackers.",
     approach:
       "Cisco enterprise network digital twin implementing micro-segmentation and least-privilege access controls.",
@@ -64,10 +63,10 @@ const projects = [
   {
     title: "SOC Log Analyzer",
     icon: Activity,
-    tag: "BLUE_TEAM/ML",
+    tag: "Blue Team / ML",
     period: "Jan – Apr 2026",
-    status: "RUNNING",
-    statusClass: "threat-low",
+    status: "Running",
+    statusClass: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
     problem: "SOCs are overwhelmed by false positives and noisy log data.",
     approach:
       "Isolation-forest ML pipeline for real-time anomaly detection across system logs.",
@@ -78,10 +77,10 @@ const projects = [
   {
     title: "Web Vulnerability Scanner",
     icon: Globe,
-    tag: "OFFENSIVE",
+    tag: "Offensive",
     period: "Oct – Dec 2024",
-    status: "DEPLOYED",
-    statusClass: "threat-critical",
+    status: "Deployed",
+    statusClass: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
     problem: "Manual OWASP Top 10 testing does not scale across multiple targets.",
     approach:
       "Automated scanner using Python and BeautifulSoup detecting SQLi, XSS, broken auth, and more.",
@@ -92,10 +91,10 @@ const projects = [
   {
     title: "AlumNet — Secure Alumni Platform",
     icon: ShieldCheck,
-    tag: "SECURE_WEBAPP",
+    tag: "Secure WebApp",
     period: "Jan – Apr 2026",
-    status: "PENTESTED",
-    statusClass: "threat-medium",
+    status: "Pentested",
+    statusClass: "bg-blue-500/10 text-blue-400 border border-blue-500/20",
     problem: "Mentorship platforms need airtight, role-based access control to be trustworthy.",
     approach:
       "Role-based Flask web app (Student/Alumni/Admin) with STRIDE threat model, bcrypt, RBAC, CSP, rate-limiting.",
@@ -106,24 +105,24 @@ const projects = [
   {
     title: "MedSentinel — IoT Rural Clinic Monitor",
     icon: HeartPulse,
-    tag: "IOT/HEALTHCARE",
+    tag: "IoT / Healthcare",
     period: "Oct – Dec 2025",
-    status: "ACTIVE",
-    statusClass: "threat-low",
+    status: "Active",
+    statusClass: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
     problem: "Rural clinics can silently go dark with no automated detection.",
     approach:
       "ESP32 + sensor-fusion system detecting ghost clinics in real time, validated with NGO stakeholders.",
-    impact: "86% detection accuracy and 95.8% uptime, validated by 8/10 NGO stakeholders.",
+    impact: "86% detection accuracy and 95.8% uptime, validated by NGO stakeholders.",
     stack: ["ESP32", "Python", "Machine Learning"],
     github: "https://github.com/shehrozmajeed",
   },
   {
     title: "AutoSchedule-GIK",
     icon: CalendarClock,
-    tag: "SYSTEMS",
+    tag: "Systems",
     period: "Jan – Apr 2026",
-    status: "STABLE",
-    statusClass: "threat-low",
+    status: "Stable",
+    statusClass: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
     problem: "Manual timetabling can't satisfy room, faculty, and course constraints at scale.",
     approach:
       "Conflict-free timetable engine for GIKI handling room, faculty, and course constraints simultaneously.",
@@ -134,10 +133,10 @@ const projects = [
   {
     title: "LNTv2.0 — Local Network Toolkit",
     icon: Wrench,
-    tag: "TOOLING",
+    tag: "Tooling",
     period: "Jun – Jul 2025",
-    status: "DEPLOYED",
-    statusClass: "threat-high",
+    status: "Deployed",
+    statusClass: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
     problem: "Switching between 10+ separate Kali Linux tools slows down pentest setup.",
     approach:
       "GUI-based suite in Python/Tkinter consolidating Nmap, Metasploit, and other core Kali tools into one interface.",
@@ -162,70 +161,69 @@ function ProjectCard({
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
-      className="terminal-card rounded-xl p-5 md:p-6 hover:border-hack-green/40 transition-all group will-change-transform flex flex-col h-full border-scan-hover"
+      transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+      className="glass-panel p-6 flex flex-col h-full hover:border-zinc-500/50 transition-colors"
       style={{ transformStyle: "preserve-3d" }}
     >
       {/* Header */}
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between mb-5">
         <div className="flex items-center gap-3">
-          <project.icon
-            className="w-5 h-5 text-hack-green group-hover:scale-110 transition-transform"
-            style={{ filter: "drop-shadow(0 0 4px rgba(0,255,65,0.7))" }}
-          />
+          <div className="p-2 rounded-lg bg-zinc-800/50">
+            <project.icon className="w-5 h-5 text-blue-400" />
+          </div>
           <div>
-            <div className="text-[9px] font-mono text-hack-green/30 tracking-widest">
-              [{project.tag}]
+            <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">
+              {project.tag}
             </div>
-            <div className="text-[9px] font-mono text-[#3a5a3a]">
+            <div className="text-[10px] font-mono text-zinc-500">
               {project.period}
             </div>
           </div>
         </div>
-        <span className={`text-[9px] font-mono px-2 py-0.5 rounded ${project.statusClass}`}>
-          ● {project.status}
+        <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${project.statusClass}`}>
+          {project.status}
         </span>
       </div>
 
       {/* Title */}
-      <h3 className="font-display text-sm font-bold text-white mb-4 group-hover:text-hack-green transition-colors tracking-wide leading-tight">
+      <h3 className="font-display text-lg font-bold text-white mb-4 tracking-wide">
         {project.title}
       </h3>
 
       {/* Details */}
-      <div className="space-y-3 mb-5 flex-1 font-mono">
+      <div className="space-y-4 mb-6 flex-1">
         <div>
-          <span className="text-[9px] text-hack-red/60 uppercase tracking-widest">
-            PROBLEM:
+          <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-mono">
+            Problem:
           </span>
-          <p className="text-[11px] text-[#4a7a4a] mt-1 leading-relaxed">
+          <p className="text-sm text-zinc-300 mt-1 leading-relaxed">
             {project.problem}
           </p>
         </div>
         <div>
-          <span className="text-[9px] text-hack-amber/60 uppercase tracking-widest">
-            APPROACH:
+          <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-mono">
+            Approach:
           </span>
-          <p className="text-[11px] text-[#4a7a4a] mt-1 leading-relaxed">
+          <p className="text-sm text-zinc-300 mt-1 leading-relaxed">
             {project.approach}
           </p>
         </div>
         <div>
-          <span className="text-[9px] text-hack-green/60 uppercase tracking-widest">
-            IMPACT:
+          <span className="text-[10px] text-blue-400/80 uppercase tracking-widest font-mono">
+            Impact:
           </span>
-          <p className="text-[11px] text-hack-green/80 mt-1 leading-relaxed">
+          <p className="text-sm text-white font-medium mt-1 leading-relaxed">
             {project.impact}
           </p>
         </div>
       </div>
 
       {/* Stack tags */}
-      <div className="flex flex-wrap gap-1.5 mb-4">
+      <div className="flex flex-wrap gap-2 mb-6">
         {project.stack.map((tech) => (
           <span
             key={tech}
-            className="text-[9px] px-2 py-0.5 rounded font-mono text-hack-green/50 border border-hack-green/15 bg-hack-green/5"
+            className="text-[10px] px-2 py-1 rounded-md font-mono text-zinc-400 border border-zinc-700 bg-zinc-800/50"
           >
             {tech}
           </span>
@@ -237,11 +235,11 @@ function ProjectCard({
         href={project.github}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-[11px] font-mono text-hack-green/50 hover:text-hack-green transition-colors mt-auto"
+        className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-white transition-colors mt-auto group"
       >
-        <Terminal className="w-3 h-3" />
-        git clone /project
-        <ExternalLink className="w-3 h-3" />
+        <Github className="w-4 h-4" />
+        View Source
+        <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
       </a>
     </motion.div>
   );
@@ -249,31 +247,16 @@ function ProjectCard({
 
 export default function Projects() {
   return (
-    <SectionWrapper id="projects" className="matrix-grid">
+    <SectionWrapper id="projects">
       {/* Section header */}
-      <div className="flex items-center gap-3 mb-12">
-        <span className="text-hack-green/40 font-mono text-sm">[003]</span>
-        <div className="flex-1 h-[1px] bg-hack-green/10" />
-        <span className="font-display text-xs tracking-widest text-hack-green/40">EXPLOIT_DB.SH</span>
-        <div className="flex-1 h-[1px] bg-hack-green/10" />
+      <div className="flex items-center gap-4 mb-16">
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
+          Featured <span className="text-blue-500">Projects</span>
+        </h2>
+        <div className="flex-1 h-[1px] bg-gradient-to-r from-zinc-800 to-transparent" />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-14"
-      >
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 tracking-widest">
-          FEATURED <span className="text-hack-green text-glow">PROJECTS</span>
-        </h2>
-        <p className="text-[#4a7a4a] max-w-2xl mx-auto font-mono text-xs">
-          <span className="text-hack-red/60">root@kali:~/projects# </span>
-          find . -name &#34;*.py&#34; -type f | xargs grep &#34;impact=HIGH&#34;
-        </p>
-      </motion.div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, i) => (
           <ProjectCard key={i} project={project} index={i} />
         ))}

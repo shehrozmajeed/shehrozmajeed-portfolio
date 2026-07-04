@@ -9,57 +9,63 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        hack: {
-          green: "#00ff41",
-          "green-dim": "#00cc33",
-          "green-faint": "rgba(0,255,65,0.08)",
-          red: "#ff0033",
-          "red-dim": "#cc0022",
-          amber: "#ffaa00",
-          cyan: "#00e5ff",
-          bg: "#000000",
-          surface: "#050a05",
-          "surface-2": "#0a110a",
+        primary: "#ffffff",
+        secondary: "#a1a1aa", // zinc-400
+        tertiary: "#52525b", // zinc-600
+        background: "#09090b", // zinc-950
+        surface: "#18181b", // zinc-900
+        "surface-2": "#27272a", // zinc-800
+        accent: {
+          blue: "#3b82f6", // blue-500
+          cyan: "#06b6d4", // cyan-500
+          emerald: "#10b981", // emerald-500
         },
-        // keep legacy names so nothing breaks during migration
-        cyber: {
-          black: "#000000",
-          navy: "#050a05",
-          blue: "#00ff41",
-          purple: "#ff0033",
-          pink: "#ff007a",
-          gold: "#ffaa00",
-          surface: "rgba(0, 12, 0, 0.6)",
+        // Keep legacy names mapped to new colors to prevent immediate crashes during migration
+        hack: {
+          green: "#10b981",
+          "green-dim": "#059669",
+          "green-faint": "rgba(16, 185, 129, 0.08)",
+          red: "#ef4444",
+          "red-dim": "#dc2626",
+          amber: "#f59e0b",
+          cyan: "#06b6d4",
+          bg: "#09090b",
+          surface: "#18181b",
+          "surface-2": "#27272a",
         },
       },
       fontFamily: {
-        sans: ["JetBrains Mono", "Share Tech Mono", "monospace"],
-        display: ["Orbitron", "JetBrains Mono", "monospace"],
-        mono: ["JetBrains Mono", "Share Tech Mono", "monospace"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["Outfit", "Inter", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       animation: {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "glow-green": "glow-green 2s ease-in-out infinite alternate",
-        "glow-red": "glow-red 2s ease-in-out infinite alternate",
-        "matrix-rain": "matrix-rain 20s linear infinite",
-        "terminal-type": "terminal-type 0.1s steps(1) infinite",
+        "float": "float 6s ease-in-out infinite",
+        "blob": "blob 7s infinite",
       },
       keyframes: {
-        "glow-green": {
-          "0%":   { boxShadow: "0 0 5px #00ff4120, 0 0 10px #00ff4110" },
-          "100%": { boxShadow: "0 0 20px #00ff4160, 0 0 40px #00ff4130, 0 0 60px #00ff4115" },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
         },
-        "glow-red": {
-          "0%":   { boxShadow: "0 0 5px #ff003320, 0 0 10px #ff003310" },
-          "100%": { boxShadow: "0 0 20px #ff003360, 0 0 40px #ff003330" },
+        blob: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(30px, -50px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20px, 20px) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
         },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      },
-      dropShadow: {
-        "green": "0 0 8px rgba(0, 255, 65, 0.8)",
-        "red": "0 0 8px rgba(255, 0, 51, 0.8)",
       },
     },
   },

@@ -4,9 +4,10 @@ import { motion, useInView, useMotionValue, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 5, suffix: "%", label: "TOP GLOBAL RANK — TRYHACKME" },
-  { value: 8000, suffix: "+", label: "TRYHACKME POINTS" },
-  { value: 9, suffix: "", label: "SECURITY & AI TOOLS DEPLOYED" },
+  { value: 5, suffix: "%", label: "Top Global Rank (TryHackMe)" },
+  { value: 8000, suffix: "+", label: "TryHackMe Points" },
+  { value: 100, suffix: "+", label: "TryHackMe Rooms Solved" },
+  { value: 9, suffix: "", label: "Security & AI Tools Deployed" },
 ];
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
@@ -29,20 +30,18 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
   return (
     <span
       ref={ref}
-      className="font-display text-4xl md:text-5xl font-black text-hack-green text-glow"
+      className="font-display text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400"
     >
       {display}
-      <span className="text-hack-red">{suffix}</span>
+      <span className="text-emerald-400">{suffix}</span>
     </span>
   );
 }
 
 export default function StatsBar() {
   return (
-    <div className="relative z-10 border-y border-hack-green/10 bg-black/50 backdrop-blur-sm">
-      {/* Top scan line */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-hack-green to-transparent" />
-      <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div className="relative z-10 border-y border-white/5 bg-surface/30 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 lg:grid-cols-4 gap-8">
         {stats.map((stat, i) => (
           <motion.div
             key={i}
@@ -50,17 +49,15 @@ export default function StatsBar() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="text-center"
+            className="text-center p-6 glass-panel flex flex-col items-center justify-center gap-2"
           >
             <Counter value={stat.value} suffix={stat.suffix} />
-            <p className="text-[9px] md:text-[10px] text-white mt-2 font-mono tracking-widest font-semibold">
+            <p className="text-sm text-secondary font-medium tracking-wide">
               {stat.label}
             </p>
           </motion.div>
         ))}
       </div>
-      {/* Bottom scan line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-hack-green to-transparent" />
     </div>
   );
 }

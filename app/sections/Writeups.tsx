@@ -57,47 +57,46 @@ function WriteupCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
-      className="terminal-card rounded-xl p-5 md:p-6 hover:border-hack-green/40 transition-all group flex flex-col h-full border-scan-hover"
+      className="glass-panel rounded-2xl p-6 md:p-8 hover:bg-zinc-900/40 transition-all group flex flex-col h-full border border-white/5"
       style={{ transformStyle: "preserve-3d" }}
     >
       {/* Header */}
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <writeup.icon
-            className="w-5 h-5 text-hack-green group-hover:scale-110 transition-transform"
-            style={{ filter: "drop-shadow(0 0 4px rgba(0,255,65,0.7))" }}
-          />
+      <div className="flex items-start justify-between mb-6">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 group-hover:bg-blue-500/20 group-hover:scale-110 transition-all">
+            <writeup.icon className="w-6 h-6 text-blue-400" />
+          </div>
           <div>
-            <div className="text-[9px] font-mono text-hack-green tracking-widest uppercase">
-              [{writeup.tag}]
+            <div className="text-xs font-semibold text-blue-400 tracking-wider uppercase">
+              {writeup.tag.replace('_', ' ')}
             </div>
           </div>
         </div>
-        <span className="text-[9px] font-mono px-2 py-0.5 rounded text-white bg-hack-green/20 border border-hack-green/30">
+        <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full text-zinc-300 bg-white/5 border border-white/10">
           COMPLETED: {writeup.completed}
         </span>
       </div>
 
       {/* Title */}
-      <h3 className="font-display text-lg font-bold text-white mb-3 group-hover:text-hack-green transition-colors tracking-wide">
+      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
         {writeup.title}
       </h3>
 
       {/* Description */}
-      <p className="text-white/80 font-mono text-xs leading-relaxed mb-5 flex-1">
+      <p className="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">
         {writeup.description}
       </p>
 
       {/* Topics */}
-      <div className="mb-6">
-        <span className="text-[10px] text-white/50 uppercase tracking-widest font-mono mb-2 block">
-          Key Topics Covered:
+      <div className="mb-8">
+        <span className="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-3 block">
+          Key Topics Covered
         </span>
         <div className="flex flex-wrap gap-2">
           {writeup.topics.map((topic) => (
             <span
               key={topic}
-              className="text-[10px] px-2 py-1 rounded font-mono text-white bg-white/5 border border-white/10"
+              className="text-xs px-3 py-1.5 rounded-lg font-medium text-zinc-300 bg-zinc-800/50 border border-white/5"
             >
               {topic}
             </span>
@@ -110,11 +109,11 @@ function WriteupCard({
         href={writeup.github}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-xs font-mono text-hack-green hover:text-white transition-colors mt-auto border border-hack-green/30 px-4 py-2 rounded bg-hack-green/5 hover:bg-hack-green/20 w-fit"
+        className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white transition-all mt-auto border border-blue-500/30 px-5 py-2.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 hover:border-blue-400/50 w-full md:w-fit"
       >
         <BookOpen className="w-4 h-4" />
         View Walkthroughs
-        <ExternalLink className="w-3 h-3 ml-1" />
+        <ExternalLink className="w-4 h-4 ml-1" />
       </a>
     </motion.div>
   );
@@ -122,35 +121,25 @@ function WriteupCard({
 
 export default function Writeups() {
   return (
-    <SectionWrapper id="writeups" className="matrix-grid">
-      {/* Section header */}
-      <div className="flex items-center gap-3 mb-12">
-        <span className="text-hack-green font-mono text-sm">[03.5]</span>
-        <div className="flex-1 h-[1px] bg-hack-green/20" />
-        <span className="font-display text-xs tracking-widest text-white">WRITEUPS.MD</span>
-        <div className="flex-1 h-[1px] bg-hack-green/20" />
-      </div>
-
+    <SectionWrapper id="writeups">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-14"
+        className="text-center mb-16"
       >
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 tracking-widest text-white">
-          WRITEUPS & <span className="text-hack-green text-glow">WALKTHROUGHS</span>
+        <span className="text-blue-400 font-semibold tracking-wider text-sm mb-4 block uppercase">
+          Technical Writing
+        </span>
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+          Writeups & Walkthroughs
         </h2>
-        <p className="text-white/80 max-w-2xl mx-auto font-mono text-sm">
-          <span className="text-hack-green">root@kali:~/writeups# </span>
-          cat stats.txt
-          <br />
-          <span className="text-white mt-2 block font-semibold text-base">
-            Total TryHackMe Rooms Documented: <span className="text-hack-green text-glow">100+</span>
-          </span>
+        <p className="text-zinc-400 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+          Documented solutions and methodologies for <strong className="text-white">100+</strong> TryHackMe rooms, focusing on offensive security and AI systems.
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
         {writeups.map((writeup, i) => (
           <WriteupCard key={i} writeup={writeup} index={i} />
         ))}

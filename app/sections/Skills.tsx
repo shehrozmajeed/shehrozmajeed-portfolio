@@ -6,8 +6,8 @@ import SectionWrapper from "../components/SectionWrapper";
 const skillCategories = [
   {
     title: "Offensive Security",
-    prefix: "ATK",
-    barClass: "progress-neon-red",
+    barClass: "bg-red-500",
+    glowClass: "shadow-[0_0_10px_rgba(239,68,68,0.5)]",
     skills: [
       { name: "Web App Pen Testing (OWASP)", level: 95 },
       { name: "Network Security & Recon", level: 90 },
@@ -18,8 +18,8 @@ const skillCategories = [
   },
   {
     title: "Tools & Platforms",
-    prefix: "TOOL",
-    barClass: "progress-neon",
+    barClass: "bg-blue-500",
+    glowClass: "shadow-[0_0_10px_rgba(59,130,246,0.5)]",
     skills: [
       { name: "Burp Suite Pro", level: 95 },
       { name: "Metasploit Framework", level: 90 },
@@ -30,8 +30,8 @@ const skillCategories = [
   },
   {
     title: "Programming",
-    prefix: "CODE",
-    barClass: "progress-neon-cyan",
+    barClass: "bg-emerald-500",
+    glowClass: "shadow-[0_0_10px_rgba(16,185,129,0.5)]",
     skills: [
       { name: "Python", level: 95 },
       { name: "Bash Scripting", level: 88 },
@@ -42,8 +42,8 @@ const skillCategories = [
   },
   {
     title: "AI / ML in Security",
-    prefix: "ML",
-    barClass: "progress-neon-amber",
+    barClass: "bg-purple-500",
+    glowClass: "shadow-[0_0_10px_rgba(168,85,247,0.5)]",
     skills: [
       { name: "Anomaly Detection", level: 90 },
       { name: "PyTorch / Scikit-learn", level: 85 },
@@ -57,37 +57,36 @@ function SkillBar({
   name,
   level,
   barClass,
+  glowClass,
   delay,
-  prefix,
 }: {
   name: string;
   level: number;
   barClass: string;
+  glowClass: string;
   delay: number;
-  prefix: string;
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
       className="mb-5"
     >
-      <div className="flex justify-between mb-1.5 font-mono">
-        <span className="text-xs text-white">
-          <span className="text-hack-green">[{prefix}] </span>
+      <div className="flex justify-between mb-2">
+        <span className="text-sm font-medium text-zinc-300">
           {name}
         </span>
-        <span className="text-[10px] text-hack-green font-bold">{level}%</span>
+        <span className="text-xs font-semibold text-zinc-400">{level}%</span>
       </div>
-      <div className="w-full h-[3px] bg-hack-green/8 rounded-full overflow-hidden relative">
+      <div className="w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden relative">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
           viewport={{ once: true }}
-          transition={{ duration: 1.2, delay: delay + 0.2, ease: "easeOut" }}
-          className={`h-full rounded-full ${barClass}`}
+          transition={{ duration: 1, delay: delay + 0.1, ease: "easeOut" }}
+          className={`h-full rounded-full ${barClass} ${glowClass}`}
         />
       </div>
     </motion.div>
@@ -98,57 +97,43 @@ export default function Skills() {
   return (
     <SectionWrapper id="skills">
       {/* Section header */}
-      <div className="flex items-center gap-3 mb-12">
-        <span className="text-hack-green font-mono text-sm font-bold">[002]</span>
-        <div className="flex-1 h-[1px] bg-hack-green/40" />
-        <span className="font-display text-xs tracking-widest text-hack-green font-bold">SKILL_MATRIX.SH</span>
-        <div className="flex-1 h-[1px] bg-hack-green/40" />
+      <div className="flex items-center gap-4 mb-16">
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
+          Technical <span className="text-blue-500">Arsenal</span>
+        </h2>
+        <div className="flex-1 h-[1px] bg-gradient-to-r from-zinc-800 to-transparent" />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-14"
-      >
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 tracking-widest">
-          TECHNICAL <span className="text-hack-green text-glow">ARSENAL</span>
-        </h2>
-        <p className="text-white max-w-2xl mx-auto font-mono text-sm font-semibold">
-          <span className="text-hack-red">root@arsenal:~# </span>
-          ls -la /tools && cat /skills/matrix.json
-        </p>
-      </motion.div>
-
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-8">
         {skillCategories.map((cat, ci) => (
           <motion.div
             key={ci}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: ci * 0.15 }}
-            className="terminal-card rounded-xl p-6 md:p-7"
+            transition={{ duration: 0.5, delay: ci * 0.1 }}
+            className="glass-panel p-6 md:p-8 hover:border-zinc-500/50 transition-colors"
           >
-            {/* Terminal header bar */}
-            <div className="flex items-center gap-2 mb-5 pb-3 border-b border-hack-green/10">
-              <span className="w-2 h-2 rounded-full bg-hack-red/70" />
-              <span className="w-2 h-2 rounded-full bg-hack-amber/70" />
-              <span className="w-2 h-2 rounded-full bg-hack-green/70" />
-              <h3 className="font-display text-xs font-bold ml-2 text-white tracking-widest">
-                {cat.title.toUpperCase()}
+            {/* Category header */}
+            <div className="flex items-center gap-3 mb-8 pb-4 border-b border-white/5">
+              <div className={`w-2 h-2 rounded-full ${cat.barClass} ${cat.glowClass}`} />
+              <h3 className="font-display text-lg font-bold text-white tracking-wide">
+                {cat.title}
               </h3>
             </div>
-            {cat.skills.map((skill, si) => (
-              <SkillBar
-                key={si}
-                name={skill.name}
-                level={skill.level}
-                barClass={cat.barClass}
-                delay={si * 0.08}
-                prefix={cat.prefix}
-              />
-            ))}
+            
+            <div className="space-y-6">
+              {cat.skills.map((skill, si) => (
+                <SkillBar
+                  key={si}
+                  name={skill.name}
+                  level={skill.level}
+                  barClass={cat.barClass}
+                  glowClass={cat.glowClass}
+                  delay={si * 0.05}
+                />
+              ))}
+            </div>
           </motion.div>
         ))}
       </div>

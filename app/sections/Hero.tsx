@@ -1,239 +1,160 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { ArrowDown, Github, Linkedin, Mail, Terminal } from "lucide-react";
-import { useEffect, useState } from "react";
-
-const bootLines = [
-  "> INITIALIZING SYSTEM...",
-  "> LOADING OFFENSIVE MODULES [████████████] 100%",
-  "> CONNECTING TO C2 SERVER... OK",
-  "> RECON ENGINE ACTIVE",
-  "> EXPLOITATION FRAMEWORK LOADED",
-  "> CLEARANCE LEVEL: ██████████ GRANTED",
-  "> IDENTITY: SHEHROZ MAJEED // RED TEAM LEAD",
-];
+import { ArrowDown, Github, Linkedin, Mail, Terminal, ChevronRight, Download } from "lucide-react";
 
 export default function Hero() {
-  const [bootIndex, setBootIndex] = useState(0);
-  const [bootDone, setBootDone] = useState(false);
-
-  useEffect(() => {
-    if (bootIndex < bootLines.length) {
-      const t = setTimeout(() => setBootIndex((i) => i + 1), 200 + bootIndex * 120);
-      return () => clearTimeout(t);
-    } else {
-      const t = setTimeout(() => setBootDone(true), 300);
-      return () => clearTimeout(t);
-    }
-  }, [bootIndex]);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Horizontal scan line */}
-      <motion.div
-        className="absolute left-0 right-0 h-[1px] bg-hack-green/30 pointer-events-none"
-        style={{ boxShadow: "0 0 12px rgba(0,255,65,0.5)" }}
-        animate={{ top: ["0%", "100%"] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-      />
-
+    <section className="relative min-h-screen flex items-center justify-center pt-20">
       <div className="relative z-10 max-w-5xl mx-auto px-6 w-full">
-        {/* Boot terminal */}
-        <AnimatePresence>
-          {!bootDone && (
+        
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
+          
+          <div className="flex-1 text-center md:text-left">
+            {/* Status badge */}
             <motion.div
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="mb-8 terminal-card rounded-lg p-5 max-w-2xl mx-auto font-mono text-xs md:text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-pill text-xs font-medium text-emerald-400 mb-8 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]"
             >
-              <div className="flex items-center gap-2 mb-3 border-b border-hack-green/10 pb-2">
-                <span className="w-3 h-3 rounded-full bg-hack-red/80" />
-                <span className="w-3 h-3 rounded-full bg-hack-amber/80" />
-                <span className="w-3 h-3 rounded-full bg-hack-green/80" />
-                <span className="text-hack-green/50 ml-2 text-[10px]">root@kali:~#</span>
-              </div>
-              {bootLines.slice(0, bootIndex).map((line, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.15 }}
-                  className="text-hack-green leading-relaxed"
-                  style={{ textShadow: "0 0 6px rgba(0,255,65,0.5)" }}
-                >
-                  {line}
-                </motion.div>
-              ))}
-              {bootIndex < bootLines.length && (
-                <span className="text-hack-green cursor-blink">█</span>
-              )}
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              AVAILABLE FOR ENGAGEMENTS
             </motion.div>
-          )}
-        </AnimatePresence>
 
-        <AnimatePresence>
-          {bootDone && (
+            {/* Name */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="font-display text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-2 text-white"
+            >
+              Shehroz
+            </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-zinc-400"
+            >
+              Majeed.
+            </motion.h1>
+
+            {/* Typing */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="text-lg md:text-xl font-mono mb-6 h-8 text-blue-400 font-medium"
             >
-              {/* Status badge */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded glass border-hack-green/20 text-hack-green text-xs font-mono mb-8"
-              >
-                <span className="w-2 h-2 rounded-full bg-hack-red animate-pulse" />
-                <span className="text-hack-red/90">LIVE</span>
-                <span className="text-hack-green/50">|</span>
-                THREAT ACTOR ACTIVE — AVAILABLE FOR ENGAGEMENTS
-              </motion.div>
-
-              {/* Name */}
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="font-display text-5xl md:text-7xl lg:text-8xl font-black tracking-wider mb-2"
-              >
-                <span
-                  className="text-hack-green glitch"
-                  data-text="SHEHROZ"
-                >
-                  SHEHROZ
-                </span>
-              </motion.h1>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-widest mb-6"
-              >
-                <span
-                  className="text-white/80 glitch"
-                  data-text="MAJEED"
-                >
-                  MAJEED
-                </span>
-              </motion.h1>
-
-              {/* Typing */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="text-base md:text-lg font-mono mb-6 h-7"
-              >
-                <span className="text-hack-green font-bold">// </span>
-                <TypeAnimation
-                  sequence={[
-                    "Offensive Security Engineer",
-                    2000,
-                    "Red Team Automation Specialist",
-                    2000,
-                    "AI-Driven Threat Operator",
-                    2000,
-                    "Penetration Tester | Top 5% TryHackMe",
-                    3000,
-                  ]}
-                  wrapper="span"
-                  speed={55}
-                  repeat={Infinity}
-                  className="text-hack-green"
-                />
-                <span className="text-hack-green cursor-blink">_</span>
-              </motion.div>
-
-              {/* Description */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="text-white max-w-2xl mx-auto mb-10 leading-relaxed text-sm font-mono font-semibold"
-              >
-                <span className="text-hack-green font-bold">[INFO] </span>
-                💻 Cybersecurity | 🎓 GIKI ’27 | 🛡️ Ethical Hacking &amp; Pen Testing | ⚙️ Security Tool Dev | AI &amp; ML <br className="hidden md:block" />
-                <span className="text-hack-green mt-2 inline-block font-bold">TryHackMe: Top 5% (8000+ Points) • Completed Paths: Jr Pentester, AI Security</span>
-              </motion.p>
-
-              {/* CTA buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
-              >
-                <a
-                  href="#projects"
-                  className="px-8 py-3 rounded font-mono font-bold text-sm tracking-wider border border-hack-green text-hack-green hover:bg-hack-green hover:text-black transition-all duration-200"
-                  style={{ boxShadow: "0 0 12px rgba(0,255,65,0.25)" }}
-                >
-                  [./RUN_PROJECTS.sh]
-                </a>
-                <a
-                  href="#contact"
-                  className="px-8 py-3 rounded font-mono text-sm tracking-wider border border-hack-red/50 text-hack-red hover:bg-hack-red hover:text-white transition-all duration-200"
-                  style={{ boxShadow: "0 0 12px rgba(255,0,51,0.15)" }}
-                >
-                  [CONTACT OPERATOR]
-                </a>
-                <a
-                  href="/Shehroz_Majeed_Resume.pdf"
-                  download
-                  className="px-8 py-3 rounded font-mono text-sm tracking-wider border border-hack-amber/40 text-hack-amber hover:bg-hack-amber/10 transition-all duration-200"
-                >
-                  [DOWNLOAD CV]
-                </a>
-              </motion.div>
-
-              {/* Social icons */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="flex items-center justify-center gap-6"
-              >
-                {[
-                  { icon: Github, href: "https://github.com/shehrozmajeed", label: "GH" },
-                  { icon: Linkedin, href: "https://linkedin.com/in/shehroz-majeed-a46a012b8", label: "LI" },
-                  { icon: Terminal, href: "https://tryhackme.com/p/shehrozmajeed", label: "THM" },
-                  { icon: Mail, href: "mailto:shehrozmajeed.sec@gmail.com", label: "ML" },
-                ].map((s, i) => (
-                  <a
-                    key={i}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded glass text-white hover:text-hack-green hover:border-hack-green/40 transition-all font-mono text-xs flex flex-col items-center gap-1 font-bold"
-                    aria-label={s.label}
-                  >
-                    <s.icon className="w-4 h-4" />
-                    <span>{s.label}</span>
-                  </a>
-                ))}
-              </motion.div>
+              <TypeAnimation
+                sequence={[
+                  "Offensive Security Engineer",
+                  2000,
+                  "Red Team Automation Specialist",
+                  2000,
+                  "AI-Driven Threat Operator",
+                  2000,
+                  "Penetration Tester",
+                  3000,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+              />
             </motion.div>
-          )}
-        </AnimatePresence>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="text-zinc-400 max-w-2xl mx-auto md:mx-0 mb-10 leading-relaxed text-base font-medium"
+            >
+              Junior at GIKI studying BS Cybersecurity. Bridging the gap between 
+              <span className="text-white"> Offensive Security</span> and 
+              <span className="text-white"> AI/ML</span>. Focusing on automated attack simulation and vulnerability research. <br className="hidden md:block mt-2" />
+              <span className="text-emerald-400/90 inline-block mt-3 bg-emerald-500/10 px-3 py-1 rounded-md border border-emerald-500/20">
+                Top 5% TryHackMe (8000+ Points) • Jr Pentester • AI Security
+              </span>
+            </motion.p>
+
+            {/* CTA buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-12"
+            >
+              <a
+                href="#projects"
+                className="group flex items-center gap-2 px-8 py-3.5 rounded-full font-medium text-sm tracking-wide bg-white text-black hover:bg-zinc-200 transition-all duration-300"
+              >
+                View Projects
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a
+                href="#contact"
+                className="px-8 py-3.5 rounded-full font-medium text-sm tracking-wide border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-all duration-300"
+              >
+                Contact Me
+              </a>
+              <a
+                href="/Shehroz_Majeed_Resume.pdf"
+                download
+                className="group flex items-center gap-2 px-8 py-3.5 rounded-full font-medium text-sm tracking-wide border border-blue-500/30 text-blue-400 hover:bg-blue-500/10 transition-all duration-300"
+              >
+                <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+                Resume
+              </a>
+            </motion.div>
+
+            {/* Social icons */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="flex items-center justify-center md:justify-start gap-5"
+            >
+              {[
+                { icon: Github, href: "https://github.com/shehrozmajeed", label: "GitHub" },
+                { icon: Linkedin, href: "https://linkedin.com/in/shehroz-majeed-a46a012b8", label: "LinkedIn" },
+                { icon: Terminal, href: "https://tryhackme.com/p/shehrozmajeed", label: "TryHackMe" },
+                { icon: Mail, href: "mailto:shehrozmajeed.sec@gmail.com", label: "Email" },
+              ].map((s, i) => (
+                <a
+                  key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full glass-panel text-zinc-400 hover:text-white hover:border-zinc-500 transition-all hover:scale-110 duration-300"
+                  aria-label={s.label}
+                >
+                  <s.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Scroll down */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
+        transition={{ delay: 1, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <a
           href="#about"
-          className="flex flex-col items-center gap-2 text-white hover:text-hack-green transition-colors font-mono text-xs font-bold"
+          className="flex flex-col items-center gap-2 text-zinc-500 hover:text-white transition-colors"
         >
-          <span>SCROLL</span>
-          <ArrowDown className="w-4 h-4 animate-bounce text-hack-green" />
+          <span className="text-xs font-medium tracking-widest uppercase">Scroll</span>
+          <ArrowDown className="w-5 h-5 animate-bounce text-zinc-400" />
         </a>
       </motion.div>
     </section>
