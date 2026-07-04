@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface Props {
@@ -14,6 +13,7 @@ export default function SectionWrapper({ children, id, className = "" }: Props) 
     <section
       id={id}
       className={`relative py-20 md:py-28 px-6 ${className}`}
+      style={{ background: "rgba(0,0,0,0.65)" }}
     >
       <div className="max-w-7xl mx-auto">{children}</div>
     </section>

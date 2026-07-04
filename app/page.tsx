@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import StatsBar from "./components/StatsBar";
+import MatrixRain from "./components/MatrixRain";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
@@ -11,17 +12,22 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <main className="relative bg-cyber-black min-h-screen">
-      <Navbar />
-      <Hero />
-      <StatsBar />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Certifications />
-      <Contact />
-      <Footer />
-    </main>
+    <>
+      {/* Global animated matrix background — fixed, behind everything */}
+      <MatrixRain />
+
+      <main className="relative min-h-screen">
+        <Navbar />
+        <Hero />
+        <StatsBar />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Certifications />
+        <Contact />
+        <Footer />
+      </main>
+    </>
   );
 }

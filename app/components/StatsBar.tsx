@@ -4,10 +4,10 @@ import { motion, useInView, useMotionValue, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 6, suffix: "%", label: "Top Global Rank — TryHackMe" },
-  { value: 100, suffix: "+", label: "Members Led at NEXUS" },
-  { value: 9, suffix: "", label: "Security & AI Projects Shipped" },
-  { value: 60, suffix: "%", label: "Red-Team Effort Reduced" },
+  { value: 6, suffix: "%", label: "TOP GLOBAL RANK — TRYHACKME" },
+  { value: 100, suffix: "+", label: "OPERATORS LED AT NEXUS" },
+  { value: 9, suffix: "", label: "SECURITY & AI TOOLS DEPLOYED" },
+  { value: 60, suffix: "%", label: "RED-TEAM EFFORT REDUCED" },
 ];
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
@@ -28,16 +28,21 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
   }, [isInView, value, motionVal]);
 
   return (
-    <span ref={ref} className="font-display text-4xl md:text-5xl font-bold text-white">
+    <span
+      ref={ref}
+      className="font-display text-4xl md:text-5xl font-black text-hack-green text-glow"
+    >
       {display}
-      <span className="text-cyber-blue">{suffix}</span>
+      <span className="text-hack-red">{suffix}</span>
     </span>
   );
 }
 
 export default function StatsBar() {
   return (
-    <div className="relative z-10 border-y border-white/5 bg-black/30 backdrop-blur-sm">
+    <div className="relative z-10 border-y border-hack-green/10 bg-black/50 backdrop-blur-sm">
+      {/* Top scan line */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-hack-green to-transparent" />
       <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((stat, i) => (
           <motion.div
@@ -49,12 +54,14 @@ export default function StatsBar() {
             className="text-center"
           >
             <Counter value={stat.value} suffix={stat.suffix} />
-            <p className="text-xs md:text-sm text-slate-500 mt-2 font-medium tracking-wide">
+            <p className="text-[9px] md:text-[10px] text-hack-green/30 mt-2 font-mono tracking-widest">
               {stat.label}
             </p>
           </motion.div>
         ))}
       </div>
+      {/* Bottom scan line */}
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-hack-green to-transparent" />
     </div>
   );
 }
