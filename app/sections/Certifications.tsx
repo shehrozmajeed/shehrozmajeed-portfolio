@@ -6,30 +6,8 @@ import { Trophy, Shield, Cloud, Bug, Award, CheckCircle } from "lucide-react";
 
 const certs = [
   {
-    name: "TryHackMe",
-    detail: "Top 6% Globally",
-    icon: Trophy,
-    color: "text-hack-amber",
-    glow: "rgba(255,170,0,0.5)",
-    border: "border-hack-amber/30",
-    bg: "bg-hack-amber/5",
-    statusClass: "threat-medium",
-    rank: "ELITE",
-  },
-  {
-    name: "Google Cybersecurity",
-    detail: "Professional Certificate",
-    icon: Shield,
-    color: "text-hack-green",
-    glow: "rgba(0,255,65,0.5)",
-    border: "border-hack-green/30",
-    bg: "bg-hack-green/5",
-    statusClass: "threat-low",
-    rank: "CERTIFIED",
-  },
-  {
-    name: "AWS Cloud Security",
-    detail: "Specialization",
+    name: "Machine Learning",
+    detail: "Udemy / Code Warriors",
     icon: Cloud,
     color: "text-hack-cyan",
     glow: "rgba(0,229,255,0.5)",
@@ -37,6 +15,31 @@ const certs = [
     bg: "bg-hack-cyan/5",
     statusClass: "threat-low",
     rank: "CERTIFIED",
+    link: "https://www.udemy.com/certificate/UC-e84efbc6-21c5-49ee-9fd1-ab529e1f9499/",
+  },
+  {
+    name: "Foundations of Cybersecurity",
+    detail: "Google / Coursera",
+    icon: Shield,
+    color: "text-hack-green",
+    glow: "rgba(0,255,65,0.5)",
+    border: "border-hack-green/30",
+    bg: "bg-hack-green/5",
+    statusClass: "threat-low",
+    rank: "CERTIFIED",
+    link: "https://www.coursera.org/account/accomplishments/verify/6S7Y81IOORYO",
+  },
+  {
+    name: "Python and Flask",
+    detail: "Horizon Tech Services",
+    icon: Award,
+    color: "text-hack-green",
+    glow: "rgba(0,255,65,0.5)",
+    border: "border-hack-green/30",
+    bg: "bg-hack-green/5",
+    statusClass: "threat-low",
+    rank: "CERTIFIED",
+    link: "https://www.udemy.com/certificate/UC-48b6cc7f-ea5a-4b04-9e5d-c6a8b0cc1feb/",
   },
   {
     name: "Bug Hunting",
@@ -48,10 +51,23 @@ const certs = [
     bg: "bg-hack-red/5",
     statusClass: "threat-high",
     rank: "HUNTER",
+    link: "https://www.udemy.com/certificate/UC-0600a0b1-0a6b-4a9f-827f-7dac2bff546e/",
   },
   {
-    name: "Networking for Ethical Hacking",
-    detail: "Advanced Network Security",
+    name: "AWS Cloud Clubs",
+    detail: "Generative AI Camper",
+    icon: Cloud,
+    color: "text-hack-cyan",
+    glow: "rgba(0,229,255,0.5)",
+    border: "border-hack-cyan/30",
+    bg: "bg-hack-cyan/5",
+    statusClass: "threat-low",
+    rank: "CERTIFIED",
+    link: "https://www.credly.com/badges/5ff01b0c-5a2d-45a6-b55f-dbdfa90d3961/linked_in_profile",
+  },
+  {
+    name: "Claude Code",
+    detail: "Anthropic",
     icon: Award,
     color: "text-hack-green",
     glow: "rgba(0,255,65,0.5)",
@@ -59,6 +75,19 @@ const certs = [
     bg: "bg-hack-green/5",
     statusClass: "threat-low",
     rank: "CERTIFIED",
+    link: "https://verify.skilljar.com/c/owak62amrd8r",
+  },
+  {
+    name: "Intro to MCP",
+    detail: "Anthropic",
+    icon: Trophy,
+    color: "text-hack-amber",
+    glow: "rgba(255,170,0,0.5)",
+    border: "border-hack-amber/30",
+    bg: "bg-hack-amber/5",
+    statusClass: "threat-medium",
+    rank: "ELITE",
+    link: "https://verify.skilljar.com/c/eg9oqrvgmxmh",
   },
 ];
 
@@ -91,14 +120,17 @@ export default function Certifications() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
         {certs.map((cert, i) => (
-          <motion.div
+          <motion.a
+            href={cert.link}
+            target="_blank"
+            rel="noopener noreferrer"
             key={i}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             whileHover={{ y: -4 }}
-            className={`terminal-card rounded-xl p-6 text-center border ${cert.border} ${cert.bg} group transition-all border-scan-hover`}
+            className={`terminal-card rounded-xl p-6 text-center border ${cert.border} ${cert.bg} group transition-all border-scan-hover block`}
           >
             <div
               className={`w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center border ${cert.border}`}
@@ -113,16 +145,20 @@ export default function Certifications() {
             </div>
             <h3 className="font-display text-xs font-bold text-white mb-1 tracking-wide">{cert.name}</h3>
             <p className="text-[10px] text-[#4a7a4a] font-mono">{cert.detail}</p>
-          </motion.div>
+          </motion.a>
         ))}
       </div>
 
       {/* TryHackMe banner */}
-      <motion.div
+      <motion.a
+        href="https://tryhackme.com/p/shehrozmajeed"
+        target="_blank"
+        rel="noopener noreferrer"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mt-10 max-w-3xl mx-auto terminal-card rounded-xl p-7 border border-hack-amber/25 relative overflow-hidden"
+        whileHover={{ y: -4 }}
+        className="mt-10 max-w-3xl mx-auto terminal-card rounded-xl p-7 border border-hack-amber/25 relative overflow-hidden block transition-all hover:border-hack-amber/50 hover:bg-hack-amber/5"
       >
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-hack-amber to-transparent" />
         <div className="flex flex-col md:flex-row items-center gap-6 relative z-10">
@@ -131,17 +167,18 @@ export default function Certifications() {
           </div>
           <div className="text-center md:text-left">
             <div className="text-[9px] font-mono text-hack-amber/50 tracking-widest mb-1">[GLOBAL_RANK_STATUS]</div>
-            <h3 className="font-display text-lg font-bold text-white mb-2 tracking-wide">
-              TryHackMe — <span className="text-hack-amber" style={{ textShadow: "0 0 12px rgba(255,170,0,0.5)" }}>TOP 6% GLOBALLY</span>
+            <h3 className="font-display text-lg font-bold text-white mb-2 tracking-wide flex items-center gap-2 justify-center md:justify-start">
+              TryHackMe — <span className="text-hack-amber" style={{ textShadow: "0 0 12px rgba(255,170,0,0.5)" }}>TOP 5% GLOBALLY</span>
+              <span className="text-[10px] text-hack-amber/60 border border-hack-amber/30 px-2 py-0.5 rounded bg-hack-amber/10 ml-2">VIEW PROFILE ↗</span>
             </h3>
             <p className="text-[#4a7a4a] text-xs leading-relaxed font-mono">
               <span className="text-hack-amber/40">&gt; </span>
-              500+ hours of lab time. Demonstrated hands-on skills in penetration testing,
-              privilege escalation, web exploitation, and network security.
+              Completed learning paths including Jr Pentester and AI Security. Demonstrated hands-on skills in penetration testing,
+              privilege escalation, web exploitation, and network security. 8000+ points.
             </p>
           </div>
         </div>
-      </motion.div>
+      </motion.a>
     </SectionWrapper>
   );
 }

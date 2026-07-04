@@ -200,6 +200,7 @@ export default function Hero() {
                 {[
                   { icon: Github, href: "https://github.com/shehrozmajeed", label: "GH" },
                   { icon: Linkedin, href: "https://linkedin.com/in/shehroz-majeed-a46a012b8", label: "LI" },
+                  { icon: Terminal, href: "https://tryhackme.com/p/shehrozmajeed", label: "THM" },
                   { icon: Mail, href: "mailto:shehrozmajeed.sec@gmail.com", label: "ML" },
                 ].map((s, i) => (
                   <a
