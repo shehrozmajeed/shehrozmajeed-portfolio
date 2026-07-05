@@ -305,7 +305,7 @@ export default function Projects() {
 
       {/* ═══ REMAINING PROJECTS GRID ═══ */}
       <section ref={gridRef} className={styles.section}>
-        <SectionBackground src="/images/backgrounds/other-projects.png" overlay={0.5} />
+        <SectionBackground src="/images/backgrounds/other-projects.png" overlay={0.85} />
         <div className={styles.inner}>
           <div className={styles.header}>
             <div>
