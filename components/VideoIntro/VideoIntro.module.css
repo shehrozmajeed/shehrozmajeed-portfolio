@@ -1,0 +1,446 @@
+/* ============================================================
+   VideoIntro.module.css
+   Cinematic talking-head hero — warm practical light + cold
+   monitor glow, glass controls, dark editorial type.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  background: #060504;
+  color: #f4ede3;
+  isolation: isolate;
+}
+
+/* ---------- media layers ---------- */
+
+.mediaLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  filter: blur(6px) saturate(1.15) brightness(0.52);
+  transform: scale(1.05);
+  opacity: 0.85;
+}
+
+.fgVideoWrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: clamp(72px, 10vh, 120px) clamp(16px, 3vw, 48px)
+    clamp(96px, 14vh, 160px);
+  pointer-events: none;
+}
+
+.fgVideo {
+  width: min(46vw, 520px);
+  height: min(78vh, 820px);
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 24px 80px rgba(0, 0, 0, 0.55));
+  opacity: 0;
+  pointer-events: auto;
+}
+
+.fgVideo[data-ready='true'] {
+  opacity: 1;
+  transition: opacity 1.4s ease;
+}
+
+/* ---------- Three.js particle canvas ---------- */
+
+.particleCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* ---------- cinematic color / gradient grading ---------- */
+
+.grade {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 20% 15%, rgba(255, 141, 61, 0.15), transparent 55%),
+    radial-gradient(110% 90% at 85% 90%, rgba(61, 122, 255, 0.12), transparent 60%),
+    linear-gradient(to top, rgba(3, 2, 2, 0.82) 0%, rgba(3, 2, 2, 0.35) 32%, rgba(3, 2, 2, 0.02) 58%, rgba(3, 2, 2, 0.20) 100%),
+    linear-gradient(to right, rgba(3, 2, 2, 0.72) 0%, rgba(3, 2, 2, 0.45) 42%, rgba(3, 2, 2, 0.08) 68%, rgba(3, 2, 2, 0.25) 100%);
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- content ---------- */
+
+.content {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(24px, 5vw, 88px);
+  padding-bottom: clamp(96px, 12vh, 140px);
+  max-width: 1400px;
+  margin: 0 auto;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+}
+
+.tagline {
+  font-family: var(--font-body, 'Sora', sans-serif);
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #ffb27a;
+  opacity: 0;
+  margin-bottom: clamp(14px, 2vw, 22px);
+}
+
+.nameBlock {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.86;
+  margin-bottom: clamp(18px, 3vw, 30px);
+}
+
+.nameLine {
+  font-family: var(--font-display, 'Bebas Neue', sans-serif);
+  font-weight: 400;
+  font-size: clamp(58px, 13vw, 168px);
+  letter-spacing: 0.01em;
+  color: #f7f1e6;
+  text-shadow: 0 12px 60px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  overflow: hidden;
+}
+
+.nameLine span {
+  display: inline-block;
+  will-change: transform;
+}
+
+.nameLine.accent {
+  background: linear-gradient(92deg, #ffcf9e 0%, #ff9d52 45%, #f7f1e6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  font-family: var(--font-body, 'Sora', sans-serif);
+  font-weight: 400;
+  font-size: clamp(14px, 1.5vw, 19px);
+  line-height: 1.6;
+  color: rgba(244, 237, 227, 0.78);
+  max-width: 560px;
+  opacity: 0;
+}
+
+.subtitle strong {
+  color: #f7f1e6;
+  font-weight: 600;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(18px, 2.5vw, 26px);
+  max-width: 640px;
+  opacity: 0;
+}
+
+.highlightPill {
+  font-family: var(--font-body, 'Sora', sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(244, 237, 227, 0.85);
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 241, 230, 0.16);
+  background: rgba(20, 16, 12, 0.32);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
+
+/* ---------- media controls (glassmorphism) ---------- */
+
+.controls {
+  position: absolute;
+  top: clamp(88px, 11vw, 108px);
+  right: clamp(20px, 4vw, 40px);
+  z-index: 6;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+}
+
+.glassBtn {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 241, 230, 0.22);
+  background: rgba(20, 16, 12, 0.35);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  color: #f7f1e6;
+  cursor: pointer;
+  transition: background 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+}
+
+.glassBtn:hover {
+  background: rgba(255, 157, 82, 0.18);
+  border-color: rgba(255, 157, 82, 0.55);
+  transform: translateY(-2px);
+}
+
+.glassBtn:active {
+  transform: translateY(0) scale(0.94);
+}
+
+.glassBtn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- tap-for-sound badge ---------- */
+
+.soundBadge {
+  position: absolute;
+  top: clamp(144px, 17vw, 164px);
+  right: clamp(20px, 4vw, 40px);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 241, 230, 0.18);
+  background: rgba(20, 16, 12, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: var(--font-body, 'Sora', sans-serif);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(247, 241, 230, 0.85);
+  animation: badgeFloat 2.6s ease-in-out infinite;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.soundBadge.hidden {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.pulseDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff9d52;
+  box-shadow: 0 0 0 0 rgba(255, 157, 82, 0.6);
+  animation: pulseDot 1.8s ease-out infinite;
+}
+
+@keyframes pulseDot {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 157, 82, 0.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(255, 157, 82, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 157, 82, 0); }
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* ---------- scroll indicator ---------- */
+
+.scrollIndicator {
+  position: absolute;
+  bottom: clamp(28px, 4vh, 44px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(244, 237, 227, 0.7);
+  opacity: 0;
+}
+
+.scrollLabel {
+  font-family: var(--font-body, 'Sora', sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.scrollLine {
+  position: relative;
+  width: 1px;
+  height: 44px;
+  background: rgba(244, 237, 227, 0.18);
+  overflow: hidden;
+}
+
+.scrollLine::after {
+  content: '';
+  position: absolute;
+  top: -44px;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  background: linear-gradient(to bottom, transparent, #ff9d52 55%, transparent);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(88px); }
+}
+
+.scrollIndicator:hover {
+  color: #ffcf9e;
+}
+
+/* ---------- replay overlay (shown once playback ends, no loop) ---------- */
+
+.replayOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(3, 2, 2, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.replayOverlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.replayBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #f7f1e6;
+}
+
+.replayCircle {
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 241, 230, 0.3);
+  background: rgba(20, 16, 12, 0.45);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.replayBtn:hover .replayCircle {
+  transform: scale(1.08);
+  border-color: rgba(255, 157, 82, 0.6);
+  background: rgba(255, 157, 82, 0.18);
+}
+
+.replayCircle svg {
+  width: 28px;
+  height: 28px;
+  color: #ff9d52;
+}
+
+.replayLabel {
+  font-family: var(--font-body, 'Sora', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(244, 237, 227, 0.75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soundBadge,
+  .pulseDot,
+  .scrollLine::after {
+    animation: none;
+  }
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 720px) {
+  .content {
+    padding-bottom: 118px;
+  }
+  .subtitle {
+    max-width: 100%;
+  }
+  .controls {
+    top: 80px;
+    right: 16px;
+  }
+  .soundBadge {
+    top: 136px;
+    right: 16px;
+  }
+  .fgVideoWrap {
+    align-items: center;
+    justify-content: center;
+    padding: 88px 12px 132px;
+  }
+  .fgVideo {
+    width: min(88vw, 360px);
+    height: min(52vh, 480px);
+    object-position: center center;
+  }
+  .bgVideo {
+    object-position: 50% 25%;
+  }
+}

@@ -1,0 +1,125 @@
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+}
+
+.gate.done {
+  display: none;
+}
+
+.half {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: #060504;
+  overflow: hidden;
+}
+
+.half::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(90% 140% at 22% 0%, rgba(255, 141, 61, 0.14), transparent 60%),
+    radial-gradient(90% 140% at 78% 100%, rgba(61, 122, 255, 0.12), transparent 60%);
+}
+
+.top {
+  top: 0;
+}
+
+.top::before {
+  bottom: 0;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.bottom::before {
+  top: 0;
+}
+
+.seamLine {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 157, 82, 0.35),
+    transparent
+  );
+  transform: translateY(-0.5px);
+  z-index: 301;
+}
+
+.content {
+  position: fixed;
+  inset: 0;
+  z-index: 302;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  text-align: center;
+  padding: 24px;
+}
+
+.mark {
+  font-family: var(--font-display, 'Bebas Neue', sans-serif);
+  font-size: clamp(30px, 4vw, 40px);
+  letter-spacing: 0.04em;
+  color: #f7f1e6;
+}
+
+.mark span {
+  color: #ff9d52;
+}
+
+.tagline {
+  font-family: var(--font-body, 'Sora', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(244, 237, 227, 0.5);
+}
+
+.startBtn {
+  margin-top: 12px;
+  font-family: var(--font-body, 'Sora', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #060504;
+  background: linear-gradient(100deg, #ffcf9e, #ff9d52);
+  border: none;
+  padding: 16px 44px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 14px 36px -12px rgba(255, 157, 82, 0.6);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.startBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px -12px rgba(255, 157, 82, 0.75);
+}
+
+.startBtn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.hint {
+  font-family: var(--font-body, 'Sora', sans-serif);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(244, 237, 227, 0.35);
+}

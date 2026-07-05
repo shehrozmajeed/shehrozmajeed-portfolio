@@ -1,5 +1,5 @@
 {
-  "name": "shehroz-portfolio",
+  "name": "shehroz-majeed-portfolio",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -9,26 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/drei": "^9.107.0",
-    "@react-three/fiber": "^8.16.0",
-    "gsap": "^3.15.0",
-    "lenis": "^1.3.25",
-    "lucide-react": "^0.400.0",
     "next": "14.2.35",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0",
-    "three": "^0.165.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.165.0",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.13"
   },
-  "devDependencies": {
-    "@types/node": "^20.14.0",
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.0",
-    "@types/three": "^0.165.0",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.35",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.0"
+  "engines": {
+    "node": ">=18.17.0"
   }
 }
