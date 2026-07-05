@@ -11,8 +11,7 @@ const NEXT_SECTION_ID = 'about';
 
 const VideoIntro = forwardRef(function VideoIntro(_props, ref) {
   const rootRef = useRef(null);
-  const fgVideoRef = useRef(null);
-  const bgVideoRef = useRef(null);
+  const videoRef = useRef(null);
 
   const taglineRef = useRef(null);
   const nameLine1Ref = useRef(null);
@@ -38,22 +37,19 @@ const VideoIntro = forwardRef(function VideoIntro(_props, ref) {
   // in exactly as the curtain splits apart.
   useImperativeHandle(ref, () => ({
     enter() {
-      const fg = fgVideoRef.current;
-      const bg = bgVideoRef.current;
-      if (fg && bg) {
-        fg.muted = false;
-        fg.currentTime = 0;
-        bg.currentTime = 0;
+      const vid = videoRef.current;
+      if (vid) {
+        vid.muted = false;
+        vid.currentTime = 0;
 
-        fg.play()
+        vid.play()
           .then(() => setIsMuted(false))
           .catch(() => {
-            fg.muted = true;
+            vid.muted = true;
             setIsMuted(true);
             setShowSoundBadge(true);
-            fg.play().catch(() => {});
+            vid.play().catch(() => {});
           });
-        bg.play().catch(() => {});
         setIsPlaying(true);
       }
 
@@ -134,45 +130,39 @@ const VideoIntro = forwardRef(function VideoIntro(_props, ref) {
     return () => clearTimeout(timer);
   }, [isMuted]);
 
-  // ---- sync fg/bg video playback ----
+  // ---- video event listeners ----
   useEffect(() => {
-    const fg = fgVideoRef.current;
-    const bg = bgVideoRef.current;
-    if (!fg || !bg) return;
+    const vid = videoRef.current;
+    if (!vid) return;
 
     const handleCanPlay = () => setVideoReady(true);
     const handleEnded = () => {
       setIsPlaying(false);
       setHasEnded(true);
-      bg.pause();
     };
 
-    fg.addEventListener('loadeddata', handleCanPlay);
-    fg.addEventListener('ended', handleEnded);
+    vid.addEventListener('loadeddata', handleCanPlay);
+    vid.addEventListener('ended', handleEnded);
 
     return () => {
-      fg.removeEventListener('loadeddata', handleCanPlay);
-      fg.removeEventListener('ended', handleEnded);
+      vid.removeEventListener('loadeddata', handleCanPlay);
+      vid.removeEventListener('ended', handleEnded);
     };
   }, []);
 
   function restart() {
-    const fg = fgVideoRef.current;
-    const bg = bgVideoRef.current;
-    if (!fg || !bg) return;
+    const vid = videoRef.current;
+    if (!vid) return;
 
-    fg.currentTime = 0;
-    bg.currentTime = 0;
-    fg.play().catch(() => {});
-    bg.play().catch(() => {});
+    vid.currentTime = 0;
+    vid.play().catch(() => {});
     setIsPlaying(true);
     setHasEnded(false);
   }
 
   function togglePlay() {
-    const fg = fgVideoRef.current;
-    const bg = bgVideoRef.current;
-    if (!fg || !bg) return;
+    const vid = videoRef.current;
+    if (!vid) return;
 
     if (hasEnded) {
       restart();
@@ -180,20 +170,18 @@ const VideoIntro = forwardRef(function VideoIntro(_props, ref) {
     }
 
     if (isPlaying) {
-      fg.pause();
-      bg.pause();
+      vid.pause();
     } else {
-      fg.play().catch(() => {});
-      bg.play().catch(() => {});
+      vid.play().catch(() => {});
     }
     setIsPlaying(!isPlaying);
   }
 
   function toggleMute() {
-    const fg = fgVideoRef.current;
-    if (!fg) return;
-    fg.muted = !fg.muted;
-    setIsMuted(fg.muted);
+    const vid = videoRef.current;
+    if (!vid) return;
+    vid.muted = !vid.muted;
+    setIsMuted(vid.muted);
   }
 
   function scrollToNext() {
@@ -207,25 +195,13 @@ const VideoIntro = forwardRef(function VideoIntro(_props, ref) {
       {/* ---- media ---- */}
       <div className={styles.mediaLayer}>
         <video
-          ref={bgVideoRef}
+          ref={videoRef}
           className={styles.bgVideo}
           src={VIDEO_SRC}
-          muted
+          muted={isMuted}
           playsInline
           preload="auto"
-          aria-hidden="true"
         />
-        <div className={styles.fgVideoWrap}>
-          <video
-            ref={fgVideoRef}
-            className={styles.fgVideo}
-            data-ready={videoReady}
-            src={VIDEO_SRC}
-            muted={isMuted}
-            playsInline
-            preload="auto"
-          />
-        </div>
       </div>
 
       {/* ---- cinematic particle layer ---- */}
