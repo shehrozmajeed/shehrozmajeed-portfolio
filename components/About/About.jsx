@@ -35,8 +35,10 @@ export default function About() {
         }
       );
 
-      // Animate Right Column (staggering individual cards from far right)
-      const rightItems = rightRef.current.querySelectorAll(':scope > div > div, :scope > div.photoWrap');
+      // Animate Right Column (photo, stat cards, and path badges from far right)
+      const rightItems = rightRef.current.querySelectorAll(
+        `.${styles.photoWrap}, .${styles.statCard}, .${styles.pathBadge}`
+      );
       gsap.fromTo(
         rightItems,
         { autoAlpha: 0, x: '100vw' },
