@@ -302,6 +302,12 @@
   position: relative;
   background: #0a0908;
   padding: clamp(90px, 14vh, 160px) clamp(20px, 5vw, 88px);
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
 }
 
 .header {

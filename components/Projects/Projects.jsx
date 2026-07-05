@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import useScrollReveal from '../shared/useScrollReveal';
+import SectionBackground from '../shared/SectionBackground';
 import { projects } from '../../lib/data';
 import styles from './Projects.module.css';
 
@@ -304,62 +305,65 @@ export default function Projects() {
 
       {/* ═══ REMAINING PROJECTS GRID ═══ */}
       <section ref={gridRef} className={styles.section}>
-        <div className={styles.header}>
-          <div>
-            <p className={styles.eyebrow} data-reveal>
-              More Work
-            </p>
-            <h2 className={styles.heading} data-reveal>
-              Other projects.
-            </h2>
+        <SectionBackground src="/images/backgrounds/other-projects.png" overlay={0.5} />
+        <div className={styles.inner}>
+          <div className={styles.header}>
+            <div>
+              <p className={styles.eyebrow} data-reveal>
+                More Work
+              </p>
+              <h2 className={styles.heading} data-reveal>
+                Other projects.
+              </h2>
+            </div>
           </div>
-        </div>
 
-        <div className={styles.grid}>
-          {otherProjects.map((project) => (
-            <article
-              key={project.title}
-              className={styles.card}
-              data-reveal
-              onMouseMove={handleMouseMove}
-            >
-              <div className={styles.cardTop}>
-                <div>
-                  <h3 className={styles.cardTitle}>{project.title}</h3>
-                  <p className={styles.cardSubtitle}>{project.subtitle}</p>
-                </div>
-                <span className={styles.cardPeriod}>{project.period}</span>
-              </div>
-
-              <p className={styles.cardDescription}>{project.description}</p>
-
-              <div className={styles.cardFooter}>
-                <div className={styles.stack}>
-                  {project.stack.map((tech) => (
-                    <span key={tech} className={styles.tag}>
-                      {tech}
-                    </span>
-                  ))}
+          <div className={styles.grid}>
+            {otherProjects.map((project) => (
+              <article
+                key={project.title}
+                className={styles.card}
+                data-reveal
+                onMouseMove={handleMouseMove}
+              >
+                <div className={styles.cardTop}>
+                  <div>
+                    <h3 className={styles.cardTitle}>{project.title}</h3>
+                    <p className={styles.cardSubtitle}>{project.subtitle}</p>
+                  </div>
+                  <span className={styles.cardPeriod}>{project.period}</span>
                 </div>
 
-                <a
-                  href={project.repo ?? '#'}
-                  target={project.repo ? '_blank' : undefined}
-                  rel={project.repo ? 'noreferrer noopener' : undefined}
-                  className={`${styles.repoLink} ${!project.repo ? styles.disabled : ''}`}
-                  aria-label={
-                    project.repo
-                      ? `View ${project.title} on GitHub`
-                      : 'Repository link not yet available'
-                  }
-                  aria-disabled={!project.repo}
-                >
-                  <span className={styles.repoText}>View on GitHub</span>
-                  <GithubIcon />
-                </a>
-              </div>
-            </article>
-          ))}
+                <p className={styles.cardDescription}>{project.description}</p>
+
+                <div className={styles.cardFooter}>
+                  <div className={styles.stack}>
+                    {project.stack.map((tech) => (
+                      <span key={tech} className={styles.tag}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={project.repo ?? '#'}
+                    target={project.repo ? '_blank' : undefined}
+                    rel={project.repo ? 'noreferrer noopener' : undefined}
+                    className={`${styles.repoLink} ${!project.repo ? styles.disabled : ''}`}
+                    aria-label={
+                      project.repo
+                        ? `View ${project.title} on GitHub`
+                        : 'Repository link not yet available'
+                    }
+                    aria-disabled={!project.repo}
+                  >
+                    <span className={styles.repoText}>View on GitHub</span>
+                    <GithubIcon />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </>
