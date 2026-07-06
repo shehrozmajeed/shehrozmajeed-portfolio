@@ -43,25 +43,8 @@ export default function SmoothScrollProvider({ children }) {
 
       lenis.on('scroll', ScrollTrigger.update);
 
-      ScrollTrigger.scrollerProxy(document.documentElement, {
-        scrollTop(value) {
-          if (arguments.length) {
-            lenis.scrollTo(value, { immediate: true });
-          }
-          return lenis.scroll;
-        },
-        getBoundingClientRect() {
-          return {
-            top: 0,
-            left: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          };
-        },
-        pinType: document.documentElement.style.transform ? 'transform' : 'fixed',
-      });
-
-      ScrollTrigger.addEventListener('refresh', () => lenis?.resize());
+      // Removed legacy scrollerProxy. Modern GSAP + Lenis handle global scroll natively,
+      // avoiding catastrophic mobile coordinate jumps.
       ScrollTrigger.refresh();
 
       rafCallback = (time) => {

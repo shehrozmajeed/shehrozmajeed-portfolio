@@ -4,13 +4,21 @@
   padding: 0;
 }
 
-html,
-body {
+html {
   background: #060504;
   color: #f4ede3;
   font-family: var(--font-body), sans-serif;
   scroll-behavior: smooth;
+}
+
+body {
+  background: #060504;
+  color: #f4ede3;
+  font-family: var(--font-body), sans-serif;
   overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 
 @media (max-width: 480px) {
