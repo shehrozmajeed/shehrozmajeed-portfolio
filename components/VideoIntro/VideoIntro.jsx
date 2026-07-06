@@ -262,9 +262,22 @@ const VideoIntro = forwardRef(function VideoIntro(_props, ref) {
 
         <div ref={highlightsRef} className={styles.highlights}>
           {profile.heroHighlights.map((highlight) => (
-            <span key={highlight} className={styles.highlightPill}>
-              {highlight}
-            </span>
+            highlight.link ? (
+              <a
+                key={highlight.text}
+                href={highlight.link}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.highlightPill}
+                style={{ textDecoration: 'none', cursor: 'pointer' }}
+              >
+                {highlight.text}
+              </a>
+            ) : (
+              <span key={highlight.text} className={styles.highlightPill}>
+                {highlight.text}
+              </span>
+            )
           ))}
         </div>
       </div>

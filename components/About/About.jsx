@@ -99,15 +99,34 @@ export default function About() {
           </div>
 
           <div className={styles.pathsRow}>
-            {thmPaths.map((path) => (
-              <div key={path.name} className={styles.pathBadge}>
-                <span className={styles.pathDot} />
-                <div>
-                  <div className={styles.pathName}>{path.name}</div>
-                  <div className={styles.pathStatus}>{path.status}</div>
+            {thmPaths.map((path) => {
+              const Content = (
+                <>
+                  <span className={styles.pathDot} />
+                  <div>
+                    <div className={styles.pathName}>{path.name}</div>
+                    <div className={styles.pathStatus}>{path.status}</div>
+                  </div>
+                </>
+              );
+
+              return path.link ? (
+                <a
+                  key={path.name}
+                  href={path.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.pathBadge}
+                  style={{ textDecoration: 'none', cursor: 'pointer' }}
+                >
+                  {Content}
+                </a>
+              ) : (
+                <div key={path.name} className={styles.pathBadge}>
+                  {Content}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
