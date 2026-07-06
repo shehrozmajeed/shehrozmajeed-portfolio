@@ -546,17 +546,73 @@
 
 @media (max-width: 720px) {
   .panel {
-    padding-top: clamp(140px, 18vh, 200px);
+    padding-top: clamp(110px, 14vh, 140px);
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .panelContent {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .panelTitle {
+    font-size: 28px;
+  }
+  
+  .panelSubtitle {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  
+  .panelRight {
+    padding: 24px;
+  }
+
+  .panelRightHeader {
+    margin-bottom: 12px;
+  }
+  
+  .panelDescription {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .panelFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .pinHeader {
+    top: 20px;
+    left: 20px;
+  }
+
+  .pinDots {
+    bottom: 24px;
+    right: 20px;
   }
 
   .pinMeta {
-    top: auto;
-    bottom: clamp(72px, 12vh, 96px);
-    right: clamp(20px, 5vw, 32px);
+    top: 20px;
+    right: 20px;
   }
 
-  .pinCounter {
-    font-size: 42px;
+  .heading {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .cardFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 
   .panelIndex {

@@ -301,5 +301,6 @@
 @media (max-width: 600px) {
   .item {
     flex: 1 1 100%;
+    min-width: 100%;
   }
 }

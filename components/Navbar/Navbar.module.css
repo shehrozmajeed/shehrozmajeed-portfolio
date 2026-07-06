@@ -137,7 +137,7 @@
 }
 
 @media (max-width: 760px) {
-  .links {
+  .links, .resumeBtn {
     display: none;
   }
   .menuToggle {

@@ -10,6 +10,18 @@ body {
   color: #f4ede3;
   font-family: var(--font-body), sans-serif;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+@media (max-width: 480px) {
+  #about,
+  #experience,
+  #work,
+  #skills,
+  #certifications,
+  #contact {
+    scroll-margin-top: 64px;
+  }
 }
 
 img,

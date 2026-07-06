@@ -109,7 +109,7 @@
 .nameLine {
   font-family: var(--font-display, 'Bebas Neue', sans-serif);
   font-weight: 400;
-  font-size: clamp(58px, 13vw, 168px);
+  font-size: clamp(42px, 13vw, 168px);
   letter-spacing: 0.01em;
   color: #f7f1e6;
   text-shadow: 0 12px 60px rgba(0, 0, 0, 0.55);
