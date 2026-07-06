@@ -107,7 +107,7 @@ export default function EntryGate({ onEnter }) {
           SM<span>.</span>
         </p>
         <button type="button" className={styles.startBtn} onClick={handleStart}>
-          Start
+          Enter
         </button>
         <p className={styles.hint}>Enables sound for the intro</p>
       </div>
